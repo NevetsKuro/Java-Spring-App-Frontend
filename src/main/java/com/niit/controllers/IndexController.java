@@ -12,4 +12,9 @@ public class IndexController {
 		return "welcomePage";
 	}
 	
+	@RequestMapping("/Register")
+	public String gotoRegisterPage()
+	{
+		return "registerPage";
+	}
 }
