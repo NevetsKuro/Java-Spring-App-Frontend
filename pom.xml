@@ -9,11 +9,19 @@
   <url>http://maven.apache.org</url>
   <dependencies>
   
-<!--   <dependency> -->
-<!--   <groupId>webby</groupId> -->
-<!--   <artifactId>projeeBackend</artifactId> -->
-<!--   <version>0.0.1-SNAPSHOT</version> -->
-<!--   </dependency> -->
+	  <dependency>
+	  <groupId>webby</groupId>
+	  <artifactId>projeeBackend</artifactId>
+	  <version>0.0.1-SNAPSHOT</version>
+	  </dependency>
+  
+  	<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+	<dependency>
+	    <groupId>commons-logging</groupId>
+	    <artifactId>commons-logging</artifactId>
+	    <version>1.2</version>
+	</dependency>
+	  	
   
     <dependency>
       <groupId>junit</groupId>
@@ -22,12 +30,26 @@
       <scope>test</scope>
     </dependency>
 
-<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
-<dependency>
-    <groupId>org.hibernate</groupId>
-    <artifactId>hibernate-core</artifactId>
-    <version>5.2.11.Final</version>
-</dependency>
+	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-core</artifactId>
+	    <version>4.3.11.Final</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
+	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-entitymanager</artifactId>
+	    <version>4.3.11.Final</version>
+	</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-validator</artifactId>
+	    <version>4.3.1.Final</version>
+	</dependency>
 
  
     <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
@@ -61,6 +83,28 @@
     <version>4.3.11.RELEASE</version>
 </dependency>
     
+    <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-core</artifactId>
+    <version>4.2.3.RELEASE</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-web</artifactId>
+    <version>4.2.3.RELEASE</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-config</artifactId>
+    <version>4.2.3.RELEASE</version>
+</dependency>
+    
+    
     <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
 <dependency>
     <groupId>com.h2database</groupId>
@@ -80,7 +124,7 @@
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-beans</artifactId>
-    <version>4.3.10.RELEASE</version>
+    <version>4.3.12.RELEASE</version>
 </dependency>
 
 		<!-- jstl -->

@@ -12,6 +12,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<context:component-scan base-package="com.niit."></context:component-scan>
+	<context:component-scan base-package="com.*"></context:component-scan>
 	<mvc:resources mapping="/resources/**" location="/resources/"
 	cache-period="31556926"/>
 	<mvc:annotation-driven />
