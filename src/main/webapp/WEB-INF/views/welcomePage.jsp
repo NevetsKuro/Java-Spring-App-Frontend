@@ -1,5 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,6 +39,11 @@
   		position:absolute;
   		top:10px;
   		left:50%;
+  	}
+  	.bottom-left{
+  		position:absolute;
+  		top:70%;
+  		left:70%;
   	}
   	.btntrans{
     	background-color: transparent;
@@ -115,8 +120,12 @@
   	</div>
   	
 	<div class="top2">
-		<a href="Login"><button class=" btntrans btn btn-default" type="button">Login</button></a>
+		<a href="logIn"><button class=" btntrans btn btn-default" type="button">Login</button></a>
   	</div>
+    
+    <div class="bottom-left">
+    	<a href="goAEntry"><button class="btntrans btn btn-default" type="button">Admin</button></a>
+    </div>
     
   </div>
   

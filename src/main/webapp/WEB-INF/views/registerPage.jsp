@@ -15,28 +15,28 @@
 <%-- <jsp:include page="welcomePage.jsp"/> --%>
 <div class="container">
 <h2>Registration Page</h2>
-<form:form modelAttribute="user" method="POST" action="saveRegister">
+<form:form modelAttribute="user" method="post" action="saveRegister">
 <div class="form-group">
-	<label for="name">Name:</label>
-	<form:input id="regname" path="name" class="form-control" placeholder="Yuh hav done it..." autofocus/>
+	<label for="regname">Name:</label>
+	<form:input id="regname" path="name" class="form-control"/>
 </div>
 <div class="form-group">
-	<label for="email">E-mail:</label>
+	<label for="regemail">E-mail:</label>
 	<form:input id="regemail" path="email" class="form-control"/>
 </div>
 <div class="form-group">
-	<label for="place">Place:</label>
+	<label for="regplace">Place:</label>
 	<form:input id="regplace" path="place" class="form-control"/>
 </div>
 <div class="form-group">
-	<label for="name">Password:</label>
+	<label for="regpwd">Password:</label>
 	<form:input id="regpwd" path="password" class="form-control"/>
 </div>
 <div class="form-group">
 	<label for="cpassword">Confirm-Password:</label>
-	<input id="regname" type="password" class="form-control">
+	<input id="cpassword" type="password" class="form-control">
 </div>
-<div>
+<div class="form-group" >
 	<label for="gender">Gender</label>
 	<form:radiobutton path="gender" value="M" label="M"/>
 	<form:radiobutton path="gender" value="F" label="F"/>
