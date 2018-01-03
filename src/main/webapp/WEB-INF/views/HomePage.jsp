@@ -1,82 +1,201 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title> i'm a cool </title>
 <style type="text/css">
 a{
 text-decoration:none;
 color: white;
 }
+.mi-title{
+position: absolute;
+top:90%;
+left:35%;
+}
+.col-sm-3{
+position: relative;
+}
+.mi-img{
+height:300px;
+width:200px
+}
+.bdy{
+background: linear-gradient(to top right, #ff7060,#ff4935, #ff3019);
+}
+#body-div{
+background: linear-gradient(to top right, #ff7060,#ff4935, #ff3019);
+}
 </style>
 </head>
-<body>
-working!!
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Page 2</a></li>
-        <li><a href="#">Page 3</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="logIn"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="register"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<body class="bdy">
+<jsp:include page="header.jsp"></jsp:include>
+<div></div>
+<div id="body-div" class="container" >
+<div class="row">
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="1" src="<c:url value="/resources/items/movie1.1.jpg"/>"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="2" src="<c:url value="/resources/items/movie1.2.jpg"/>"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="3" src="<c:url value="/resources/items/movie1.3.jpg"/>"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="4" src="<c:url value="/resources/items/movie1.4.jpg"/>"><span class="mi-title">###</span>
+</a></div>
+<div>
+&nbsp;
+</div>
+</div>
+<div class="row">
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="<c:url value="/resources/items/movie1.5.jpg"/>"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="<c:url value="/resources/items/movie1.6.jpg"/>"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="<c:url value="/resources/items/movie1.7.jpg"/>"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="<c:url value="/resources/items/movie1.8.jpg"/>"><span class="mi-title">###</span>
+</a></div>
+<div>
+&nbsp;
+</div>
 
+</div>
+<div class="row">
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="<c:url value="/resources/items/movie1.9.jpg"/>"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="<c:url value="/resources/items/movie1.10.jpg"/>"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="<c:url value="/resources/items/movie1.11.jpg"/>"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="<c:url value="/resources/items/movie1.12.jpg"/>"><span class="mi-title">###</span>
+</a></div>
+<div>
+&nbsp;
+</div>
 
+</div>
+<div class="row">
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="<c:url value="/resources/items/movie1.13.jpg"/>"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="<c:url value="/resources/items/movie1.14.jpg"/>"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="<c:url value="/resources/items/movie1.15.jpg"/>"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="<c:url value="/resources/items/movie1.16.jpg"/>"><span class="mi-title">###</span>
+</a></div>
+<div>
+&nbsp;
+</div>
 
-<footer style="background: #333;">
+</div>
+<div class="row">
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+<div>
+&nbsp;
+</div>
+
+</div>
+<div class="row">
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+<br/>
+
+</div>
+<div class="row">
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+</div>
+<div>
+&nbsp;
+</div>
+
+<div class="row">
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+</div>
+<div>
+&nbsp;
+</div>
+
+<div class="row">
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+<div class="col-sm-3"><a href="#">
+<img class="mi-img" alt="#" src="#"><span class="mi-title">###</span>
+</a></div>
+<div>
+&nbsp;
+</div>
+
+</div>
+</div>
 <div class="container">
-<div class="col-sm-4">
-<ul>
-<li><a href="#">DCMA Request</a></li>
-<li><a href="#">Link Removal</a></li>
-<li><a href="#">Term Of Use</a></li>
-<li><a href="#">Privacy</a></li>
-</ul>
+	<jsp:include page="footer.jsp"></jsp:include>
 </div>
-<div class="col-sm-4">
-<ul>
-<li><a href="#">DCMA Request</a></li>
-<li><a href="#">Link Removal</a></li>
-<li><a href="#">Term Of Use</a></li>
-<li><a href="#">Privacy</a></li>
-</ul>
-</div>
-<div class="col-sm-4">
-<ul>
-<li><a href="#">DCMA Request</a></li>
-<li><a href="#">Link Removal</a></li>
-<li><a href="#">Term Of Use</a></li>
-<li><a href="#">Privacy</a></li>
-</ul>
-</div>
-</div>
-</footer>
 </body>
 </html>

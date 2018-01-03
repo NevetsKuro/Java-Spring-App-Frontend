@@ -18,7 +18,7 @@
 <form:form modelAttribute="user" method="post" action="saveRegister">
 <div class="form-group">
 	<label for="regname">Name:</label>
-	<form:input id="regname" path="name" class="form-control"/>
+	<form:input id="regname" path="name" class="form-control"  autofocus="autofocus"/>
 </div>
 <div class="form-group">
 	<label for="regemail">E-mail:</label>

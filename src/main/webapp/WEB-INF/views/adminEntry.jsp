@@ -24,6 +24,7 @@ border-radius: 5px;
 <div class="page-header">
 <div class="container">
 <div class="row">
+<div class="col-md-2">&nbsp;</div>
 <div class="col-md-6">
 <div class="panel with-nav-tabs panel-primary">
 <div class="panel-heading">
@@ -75,7 +76,7 @@ border-radius: 5px;
 
 <!-- Product Tab -->
 <div class="tab-pane fade" id="tab3">
-	<form method="post" action="saveProd" class="form-signin">
+	<form method="post" action="saveProd" class="form-signin" enctype="multipart/form-data">
 	<span id="reauth-email" class="reauth-email"></span>
 	
 	<h4 class="input-title">Product Id</h4>
@@ -107,6 +108,9 @@ border-radius: 5px;
 	
 	<h4 class="input-title">Product Time</h4>
 	<input class="form-control" type="number" name="pTime" required/>
+	
+	<h4 class="input-title">Product File</h4>
+	<input class="form-control" type="file" name="pFile" required/>
 	
 	<div class="form-group">
 	<table>
@@ -155,10 +159,12 @@ border-radius: 5px;
 </div>
 </div>
 
+
+<div class="col-md-3">&nbsp;</div>
 <div> 
-<div class="d-inline btn-success"><a href="productList">Product List</a> </div>
-<div class="d-inline btn-success"><a href="supplierList">Supplier List</a> </div>
-<div class="d-inline btn-success"><a href="categoryList">Category List</a> </div>
+<div class="btn btn-success"><a href="productList" type="button">Product List</a> </div>
+<div class="btn btn-success"><a href="supplierList" type="button">Supplier List</a> </div>
+<div class="btn btn-success"><a href="categoryList" type="button">Category List</a> </div>
 </div>
 
 </div>

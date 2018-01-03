@@ -1,5 +1,8 @@
 package com.niit.controllers;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Dao.CategoryDao;
@@ -84,7 +88,7 @@ public class adminController {
 	}
 	
 	@RequestMapping(value="/saveProd",method=RequestMethod.POST)
-	public ModelAndView saveProdData(HttpServletRequest req)
+	public ModelAndView saveProdData(HttpServletRequest req,@RequestParam("pFile")MultipartFile file)
 	{
 		ModelAndView mv = new ModelAndView();
 		Product prod = new Product();
@@ -93,6 +97,7 @@ public class adminController {
 		prod.setPrice(Double.parseDouble(req.getParameter("pPrice")));
 		prod.setDescription(req.getParameter("pDescription"));
 		prod.setQuality(req.getParameter("pQuality"));
+		prod.setRating(req.getParameter("pRating"));
 		prod.setReleased(req.getParameter("pReleased"));
 		prod.setStock(Integer.parseInt(req.getParameter("pStock")));
 		//SimpleDateFormat sf =new SimpleDateFormat("dd/mm/yy");
@@ -100,10 +105,25 @@ public class adminController {
 		prod.setCategory(categoryDaoImpl.findByCatId(Integer.parseInt(req.getParameter("pSupplier"))));
 		prod.setSupplier(supplierDaoImpl.findBySuppId(Integer.parseInt(req.getParameter("pCategory"))));
 		prod.setTime(Integer.parseInt(req.getParameter("pTime")));
+		
+		String filepath = req.getSession().getServletContext().getRealPath("/");
+		String filename = file.getOriginalFilename();
+		prod.setImgname(filename);
+		
+		try{
+			byte[] bfiles = file.getBytes();
+			BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filepath+"/resources/new/"+filename));
+			bos.write(bfiles);
+			bos.flush();
+			bos.close();
+		}
+		catch(IOException e){
+			System.out.println(e.getMessage());
+		}
+		
 		productDaoImpl.insertProduct(prod);
 		mv.setViewName("adminEntry");
 		return mv;
 	}
-	
 
 }

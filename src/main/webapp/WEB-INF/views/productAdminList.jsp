@@ -5,6 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>BuyMovies</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 </head>
 <body>
 <div class="container">
@@ -24,6 +28,8 @@
 <th>Stock</th>
 <th>Price</th>
 <th>Time</th>
+<th>Poster</th>
+<th>Action</th>
 </tr>
 <c:if test="${empty prodList}">
 <tr align="center">
@@ -35,7 +41,7 @@
 <td><c:out value="${st.count}"></c:out></td>
 <td><c:out value="${p.id}"></c:out></td>
 <td><c:out value="${p.name}"></c:out></td>
-<td><c:out value="${p.description} }"></c:out></td>
+<td><c:out value="${p.description}"></c:out></td>
 <td><c:out value="${p.rating }"></c:out></td>
 <td><c:out value="${p.quality}"></c:out></td>
 <td><c:out value="${p.supplier.supname }"></c:out></td>
@@ -44,6 +50,13 @@
 <td><c:out value="${p.stock }"></c:out></td>
 <td><c:out value="${p.price }"></c:out></td>
 <td><c:out value="${p.time }"></c:out></td>
+<c:set var="contextRoot" value="${pageContext.request.contextPath}"></c:set>
+<td><img src="<c:url value="${pageContext.request.contextPath}/resources/${p.imgname}"/>" height="50px" width="50px" ></td>
+
+<td class="span4">
+	<a class="btn" href="#"><span class="glyphicon glyphicon-pencil" style="color:red"></span></a>
+	<a class="btn" href="#"><span class="glyphicon glyphicon-remove" style="color:red"></span></a>
+</td>
 </tr>
 </c:forEach>
 </table>
