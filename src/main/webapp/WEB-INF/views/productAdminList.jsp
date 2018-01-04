@@ -54,8 +54,8 @@
 <td><img src="<c:url value="${pageContext.request.contextPath}/resources/${p.imgname}"/>" height="50px" width="50px" ></td>
 
 <td class="span4">
-	<a class="btn" href="#"><span class="glyphicon glyphicon-pencil" style="color:red"></span></a>
-	<a class="btn" href="#"><span class="glyphicon glyphicon-remove" style="color:red"></span></a>
+	<a class="btn" href="<c:out value="${contextRoot}"/>/updateProd?id=<c:out value="${p.id}"></c:out>"><span class="glyphicon glyphicon-pencil" style="color:red"></span></a>
+	<a class="btn" href="<c:url value="/deleteProd/${p.id}"/>"><span class="glyphicon glyphicon-remove" style="color:red"></span></a>
 </td>
 </tr>
 </c:forEach>

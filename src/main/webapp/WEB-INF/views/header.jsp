@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -30,13 +31,28 @@
             <li><a href="categoryAdminList">Category</a></li>
           </ul>
         </li>
-        <li><a href="#">#</a></li>
+        
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Category<span class="caret"></span></a>
+        <ul>
+        <c:forEach var="catVal" items="${catList}">
+        	<li><a href="${pageContext.request.contextPath}/prodCustList?cid=${catVal.cid}">${catVal.catname}</a></li>
+        </c:forEach>
+        </ul>
+      	</li>
+      	
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Supplier<span class="caret"></span></a>
+        <ul>
+        <c:forEach var="supVal" items="${supList}">
+        	<li><a href="${pageContext.request.contextPath}/prodSupList?sid=${supVal.sid}">${supVal.supname} }</a></li>
+        </c:forEach>
+        </ul>
+      	</li>
         <li><a href="#">Cart</a></li>
       </ul>
-<!--       <ul class="nav navbar-nav navbar-right"> -->
-<!--         <li><a href="logIn"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
-<!--         <li><a href="register"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
-<!--       </ul> -->
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="logIn"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      </ul>
     </div>
   </div>
 </nav>
