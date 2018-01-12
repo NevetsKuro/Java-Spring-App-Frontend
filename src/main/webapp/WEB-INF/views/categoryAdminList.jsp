@@ -11,11 +11,15 @@
 </head>
 <body>
 
+<jsp:include page="header.jsp"></jsp:include>
+
+<div class="container">
 <table class="table table-hover" id="api" class="display" border="1">
 <tr>
 <td>Index</td>
 <td>Category Id</td>
 <td>Category Name</td>
+<td>Action</td>
 </tr>
 
 <c:if test="empty catList">
@@ -28,11 +32,16 @@
 <td> <c:out value="${st.count }"></c:out></td>
 <td> <c:out value="${cat.cid }"></c:out></td>
 <td> <c:out value="${cat.catname}"></c:out></td>
+<td class="span4">
+<c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
+<a class="btn" role="button" href="${contextRoot}/admin/Edit"><span class="glyphicon glyphicon-pencil" style="color:red"></span></a>
+<a class="btn" role="button" href="${contextRoot}/admin/Delete"><span class="glyphicon glyphicon-remove" style="color:red"></span></a>
+</td>
 </tr>
 </c:forEach>
 
 
 </table>
-
+</div>
 </body>
 </html>

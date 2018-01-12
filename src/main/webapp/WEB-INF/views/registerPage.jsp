@@ -15,7 +15,8 @@
 <%-- <jsp:include page="welcomePage.jsp"/> --%>
 <div class="container">
 <h2>Registration Page</h2>
-<form:form modelAttribute="user" method="post" action="saveRegister">
+
+<form:form class="clss" modelAttribute="user" method="post" action="saveRegister">
 <div class="form-group">
 	<label for="regname">Name:</label>
 	<form:input id="regname" path="name" class="form-control"  autofocus="autofocus"/>
@@ -30,11 +31,11 @@
 </div>
 <div class="form-group">
 	<label for="regpwd">Password:</label>
-	<form:input id="regpwd" path="password" class="form-control"/>
+	<form:input id="regpwd" type="password" path="password" class="form-control"/>
 </div>
 <div class="form-group">
 	<label for="cpassword">Confirm-Password:</label>
-	<input id="cpassword" type="password" class="form-control">
+	<form:input id="cpassword" path="password" type="password" class="form-control"/>
 </div>
 <div class="form-group" >
 	<label for="gender">Gender</label>

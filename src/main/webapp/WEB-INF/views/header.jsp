@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%-- <%@ page language="j	ava" contentType="text/html; charset=ISO-8859-1" --%>
+<%--     pageEncoding="ISO-8859-1"%> --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -18,44 +18,62 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">OrkutMovies</a>
+      <a class="navbar-brand active" href="Home">OrkutMovies</a>
     </div>
+    
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="HomePage"><span class="glyphicon glyphicon-home"></span></a></li>
-        <li class="dropdown">
+        <%	
+        	Boolean ses1 = request.isUserInRole("ROLE_ADMIN");
+         %>
+        <li><a href="HomePage"><span class="glyphicon glyphicon-home"></span></a></li>
+        <c:if test="<%=ses1 %>">
+        <li><a href="goAEntry">Admin</a></li>
+        </c:if>
+        <li class="dropdown">         
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin List<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="supplierAdminList">Supplier</a></li>
-            <li><a href="productAdminList">Product</a></li>
-            <li><a href="categoryAdminList">Category</a></li>
+            <li><a href="supplierList">Supplier</a></li>
+            <li><a href="productList">Product</a></li>
+            <li><a href="categoryList">Category</a></li>
           </ul>
         </li>
         
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Category<span class="caret"></span></a>
-        <ul>
+        <ul class="dropdown-menu">
         <c:forEach var="catVal" items="${catList}">
-        	<li><a href="${pageContext.request.contextPath}/prodCustList?cid=${catVal.cid}">${catVal.catname}</a></li>
+        	<li><a href="${pageContext.request.contextPath}/prodCatList?cid=${catVal.cid}">${catVal.catname}</a></li>
         </c:forEach>
         </ul>
       	</li>
       	
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Supplier<span class="caret"></span></a>
-        <ul>
+        <ul class="dropdown-menu">
         <c:forEach var="supVal" items="${supList}">
-        	<li><a href="${pageContext.request.contextPath}/prodSupList?sid=${supVal.sid}">${supVal.supname} }</a></li>
+        	<li><a href="${pageContext.request.contextPath}/prodSupList?sid=${supVal.sid}">${supVal.supname}</a></li>
         </c:forEach>
         </ul>
       	</li>
+        
         <li><a href="#">Cart</a></li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="logIn"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <c:if test="${pageContext.request.userPrincipal.name==null}">
+        <li><a href="Register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="goToLogin"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+      </c:if>
+      
+      <c:if test="${pageContext.request.userPrincipal.name!=null}">
+        <li style="padding-top:14px;color:#9d9d9d;">
+        Welcome: ${pageContext.request.userPrincipal.name}</li>
+        <li><a href="${pageContext.request.contextPath}/logout"> Logout</a></li>
+      </c:if>
+      
       </ul>
     </div>
   </div>
-</nav>
+</nav>	
 
 </body>
 </html>

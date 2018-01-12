@@ -1,11 +1,10 @@
 package com.niit.controllers;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,10 +17,6 @@ import com.Dao.CategoryDao;
 import com.Dao.ProductDao;
 import com.Dao.SupplierDao;
 import com.Dao.UserDao;
-import com.DaoImpl.CategoryDaoImpl;
-import com.DaoImpl.ProductDaoImpl;
-import com.model.Category;
-import com.model.Supplier;
 import com.model.User;
 
 @Controller
@@ -44,16 +39,56 @@ public class IndexController {
 		return "index";
 	}
 
+	@RequestMapping("/head")
+	public String head() {
+		return "header";
+	}
+	
 	@RequestMapping("/Home")
 	public String homepage() {
 		return "welcomePage";
 	}
-
-	@RequestMapping("/logIn")
-	public String gotoLogin(@ModelAttribute("user") User user) {
-		return "loginPage";
+	
+	@RequestMapping("/HomePage")
+	public String Mainpage() {
+		return "HomePage";
 	}
 
+	@RequestMapping("/goToLogin")
+	public String gotoLogin() {
+		return "login";
+	}
+	
+	@RequestMapping("/logout")
+	public String userLogged(){
+		return "welcomePage";
+	}
+	
+	@RequestMapping(value="/userLogged")
+	public String userlog(HttpSession hs, User user, HttpServletRequest req){
+		
+		System.out.println("userlogged");
+		if(req.isUserInRole("ROLE_ADMIN")){
+			hs = req.getSession();
+			hs.setAttribute("sess",req.getUserPrincipal().getName());
+		}
+		
+		hs.setAttribute("catList", categoryDaoImpl.retrieve());
+		hs.setAttribute("supList", supplierDaoImpl.retrieve());
+		hs.setAttribute("prodList", productDaoImpl.retrieve());
+		return "redirect:/HomePage";
+	}
+	
+	@RequestMapping("/Error")
+	public String userError(){
+		return "Error";
+	}
+	
+	@RequestMapping("/reLogin")
+	public String userLogin(){
+		return "redirect:/goToLogin";
+	}	
+	
 	@RequestMapping(value = "/Register", method = RequestMethod.GET)
 	public ModelAndView gotoRegisterPage() {
 		ModelAndView mv = new ModelAndView();
@@ -70,33 +105,29 @@ public class IndexController {
 		if (result.hasErrors()) {
 			mv.setViewName("registerPage");
 		} else {
-			System.out.println("mv initialised");
+			user.setEnabled(true);
 			user.setRole("ROLE_USER");
-			System.out.println("mv initialised");
 			userDaoImpl.insertUser(user);
-			System.out.println("user class used");
-			mv.setViewName("loginPage");
+			mv.setViewName("login");
 		}
 		return mv;
 	}
 
-	@RequestMapping(value = "/loggedIn", method = RequestMethod.POST)
-	public String gotoHomePage(HttpServletRequest req, HttpServletResponse res, User user) {
-		return "HomePage";
-		// if(req.getParameter("name")==user.getName()&&req.getParameter("logpassword")==user.getPassword())
-		// {
-		// return "HomePage";
-		// }else{
-		// System.out.println("login failed and continued");
-		// return "HomePage";
-		// }
-	}
 
-	@RequestMapping("/prodCustList")
+	@RequestMapping("/productCustList")
+	public ModelAndView getCustTable(@RequestParam("cid") int cid) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("prodList", productDaoImpl.getProdByCatId(cid));
+		//changed from productCustList
+		mv.setViewName("ProductCustList");
+		return mv;
+	}
+	
+	@RequestMapping("/prodCatList")
 	public ModelAndView getCatTable(@RequestParam("cid") int cid) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("prodList", productDaoImpl.getProdByCatId(cid));
-		mv.setViewName("productCustList");
+		mv.setViewName("ProductCustList");
 		return mv;
 	}
 
@@ -105,7 +136,7 @@ public class IndexController {
 	public ModelAndView getSupTable(@RequestParam("sid") int sid) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("prodList", productDaoImpl.getProdBySupId(sid));
-		mv.setViewName("productCustList");
+		mv.setViewName("ProductCustList");
 		return mv;
 	}
 

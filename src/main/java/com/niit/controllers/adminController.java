@@ -3,8 +3,8 @@ package com.niit.controllers;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.ProcessBuilder.Redirect;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -57,8 +57,7 @@ public class adminController {
 	}
 
 	@RequestMapping("/goAEntry")
-	public String adminEntry(Model m) {
-
+	public String adminEntry(Model m){
 		m.addAttribute("catList", categoryDaoImpl.retrieve());
 		m.addAttribute("supList", supplierDaoImpl.retrieve());
 		m.addAttribute("prodList", productDaoImpl.retrieve());
@@ -89,6 +88,7 @@ public class adminController {
 		return mv;
 	}
 
+	
 	@RequestMapping(value = "/saveProd", method = RequestMethod.POST)
 	public ModelAndView saveProdData(HttpServletRequest req, @RequestParam("pFile") MultipartFile file) {
 		ModelAndView mv = new ModelAndView();
@@ -104,9 +104,10 @@ public class adminController {
 		// SimpleDateFormat sf =new SimpleDateFormat("dd/mm/yy");
 		// prod.setDate(sf.format(req.getParameter("pDate")));
 		prod.setCategory(categoryDaoImpl.findByCatId(Integer.parseInt(req.getParameter("pSupplier"))));
-		prod.setSupplier(supplierDaoImpl.findBySuppId(Integer.parseInt(req.getParameter("pCategory"))));
+		prod.setSupplier(supplierDaoImpl.findBySupId(Integer.parseInt(req.getParameter("pCategory"))));
 		prod.setTime(Integer.parseInt(req.getParameter("pTime")));
-
+		prod.setProddate(new Date());
+		
 		String filepath = req.getSession().getServletContext().getRealPath("/");
 		String filename = file.getOriginalFilename();
 		prod.setImgname(filename);
@@ -116,12 +117,10 @@ public class adminController {
 			BufferedOutputStream bos = new BufferedOutputStream(
 					new FileOutputStream(filepath + "/resources/new/" + filename));
 			bos.write(bfiles);
-			bos.flush();
 			bos.close();
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-
 		productDaoImpl.insertProduct(prod);
 		mv.setViewName("adminEntry");
 		return mv;
@@ -130,6 +129,16 @@ public class adminController {
 	@RequestMapping("/deleteProd/{pid}")
 	public String deleteProd(@PathVariable("pid") int pid) {
 		productDaoImpl.deleteProd(pid);
+		return "redirect:/productList?del";
+	}
+	@RequestMapping("/deleteSup/{sid}")
+	public String deleteSup(@PathVariable("sid") int sid) {
+		productDaoImpl.deleteProd(sid);
+		return "redirect:/productList?del";
+	}
+	@RequestMapping("/deleteCat/{cid}")
+	public String deleteCat(@PathVariable("cid") int cid) {
+		productDaoImpl.deleteProd(cid);
 		return "redirect:/productList?del";
 	}
 
@@ -156,10 +165,11 @@ public class adminController {
 		prod.setRating(req.getParameter("pRating"));
 		prod.setReleased(req.getParameter("pReleased"));
 		prod.setStock(Integer.parseInt(req.getParameter("pStock")));
-		// SimpleDateFormat sf =new SimpleDateFormat("dd/mm/yy");
-		// prod.setDate(sf.format(req.getParameter("pDate")));
+		SimpleDateFormat sf =new SimpleDateFormat("tt:mm:ss dd/mm/yy");
+		String dat = req.getParameter("pDate");
+		//prod.setProddate(sf.format("dat"));
 		prod.setCategory(categoryDaoImpl.findByCatId(Integer.parseInt(req.getParameter("pSupplier"))));
-		prod.setSupplier(supplierDaoImpl.findBySuppId(Integer.parseInt(req.getParameter("pCategory"))));
+		prod.setSupplier(supplierDaoImpl.findBySupId(Integer.parseInt(req.getParameter("pCategory"))));
 		prod.setTime(Integer.parseInt(req.getParameter("pTime")));
 		
 		productDaoImpl.update(prod);

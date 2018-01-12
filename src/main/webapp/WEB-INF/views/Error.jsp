@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-Sorry the given name and password are not correct!!!
+<b style="size: 100px">Access Denied!!!</b>
+<h1>You are not an authorized User!!!</h1>
+<h3>Click <a href="${pageContext.request.contextPath}/reLogin">here</a> to go back to login</h3>
 </body>
 </html>

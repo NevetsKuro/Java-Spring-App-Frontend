@@ -27,7 +27,7 @@
 	<input class="form-control" type="text" name="pDescription" value="${prod.description}" required/>
 	
 	<h4 class="input-title">Product date</h4>
-	<input class="form-control" type="date" name="pDate"  value="${prod.date}" required/>
+	<input class="form-control" type="date" name="pDate"  value="${prod.proddate}" required/>
 	
 	<h4 class="input-title">Product quality</h4>
 	<input class="form-control" type="text" name="pQuality" value="${prod.quality}" required/>
@@ -50,7 +50,7 @@
 		<td>Select Supplier</td>
 		<td>
 		<select class="form-control" name="pSupplier" required>
-		<option value="">---Select Supplier---</option>
+		<option value="">${prod.supplier.supname}</option>
 		<c:forEach items="${supList}" var="sup">
 		<option value="${sup.sid}">${sup.supname}</option>
 		</c:forEach>
@@ -66,7 +66,7 @@
 		<td>Select Category</td>
 		<td>
 		<select class="form-control" name="pCategory" required>
-		<option value="">---Select Category---</option>
+		<option value="">${prod.category.catname}</option>
 		<c:forEach items="${catList}" var="cat">
 		<option value="${cat.cid}">${cat.catname}</option>
 		</c:forEach>

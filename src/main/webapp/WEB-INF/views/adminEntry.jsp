@@ -7,20 +7,21 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>Admin</title>
 <style>
-a{
-text-decoration:none;
-color:white;
-border-radius: 5px;
+.roundedcorners{
+	border-radius: 5px;
 }
-
+#t1{
+	color:white;
+}
 </style>
-
 </head>
 <body>
-<div class="container">
 
+<jsp:include page="header.jsp"></jsp:include>
+
+<div class="container">
 <div class="page-header">
 <div class="container">
 <div class="row">
@@ -29,9 +30,9 @@ border-radius: 5px;
 <div class="panel with-nav-tabs panel-primary">
 <div class="panel-heading">
 <ul class="nav nav-tab">
-	<li class="col-md-4 active"><a href="#tab1" data-toggle="tab">Supplier</a></li>
-	<li class="col-md-4"><a href="#tab2" data-toggle="tab">Category</a></li>
-	<li class="col-md-4"><a href="#tab3" data-toggle="tab">Product</a></li>
+	<li class="col-md-4 active"><a href="#tab1" class="roundedcorners" data-toggle="tab"><span id="t1">Supplier</span></a></li>
+	<li class="col-md-4"><a href="#tab2" class="roundedcorners" data-toggle="tab"><span id="t1">Category</span></a></li>
+	<li class="col-md-4"><a href="#tab3" class="roundedcorners" data-toggle="tab"><span id="t1">Product</span></a></li>
 </ul>
 </div>
 
@@ -90,9 +91,6 @@ border-radius: 5px;
 	
 	<h4 class="input-title">Product description</h4>
 	<input class="form-control" type="text" name="pDescription" required/>
-	
-	<h4 class="input-title">Product date</h4>
-	<input class="form-control" type="date" name="pDate" required/>
 	
 	<h4 class="input-title">Product quality</h4>
 	<input class="form-control" type="text" name="pQuality" required/>
@@ -162,9 +160,9 @@ border-radius: 5px;
 
 <div class="col-md-3">&nbsp;</div>
 <div> 
-<div class="btn btn-success"><a href="productList" type="button">Product List</a> </div>
-<div class="btn btn-success"><a href="supplierList" type="button">Supplier List</a> </div>
-<div class="btn btn-success"><a href="categoryList" type="button">Category List</a> </div>
+<div class="btn btn-success"><a href="productList" type="button"><span id="t1">Product List</span></a> </div>
+<div class="btn btn-success"><a href="supplierList" type="button"><span id="t1">Supplier List</span></a> </div>
+<div class="btn btn-success"><a href="categoryList" type="button"><span id="t1">Category List</span></a> </div>
 </div>
 
 </div>

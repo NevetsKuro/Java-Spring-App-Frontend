@@ -19,18 +19,28 @@
         	<security:intercept-url pattern="/login" access="permitAll"/>
         	<security:intercept-url pattern="/admin/**" access="hasRole('Role_ADMIN')"/>
         	<security:form-login
-        	login-page="/loginPage"
+        	login-page="/login"
         	username-parameter="name"
         	password-parameter="password"
-        	authentication-success-forward-url="/Home"
-			authentication-failure-forward-url="/Error"/>
+        	authentication-success-forward-url="/userLogged"
+			authentication-failure-forward-url="/Error" />
 			
-			<security:logout logout-url="/logout" invalidate-session="true" logout-success-url="/"/>
+			<security:logout logout-url="/logout" invalidate-session="true" logout-success-url="/" />
 			
 			<security:access-denied-handler error-page="/Error"/>
 			
 			<security:csrf disabled="true"/>
         	
         </security:http>
+        
+        <security:authentication-manager>
+        	<security:authentication-provider>
+        		<security:jdbc-user-service
+        			data-source-ref="datasource"
+        			users-by-username-query="select	name,password, TRUE as enabled from user where name=?"
+        			authorities-by-username-query="select name, role from user where name=?"
+        			/>
+        	</security:authentication-provider>
+        </security:authentication-manager>
         
 </beans>
