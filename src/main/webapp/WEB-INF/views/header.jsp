@@ -8,6 +8,38 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+  	#searchbut{
+  		height:40px;
+  	}
+	input[type=text] {
+		margin-bottom:-5px;
+		margin-top:5px;
+	    width: 230px;
+	    height: 40px;
+	    box-sizing: border-box;
+	    border: 1px solid #gray;
+	    border-radius: 4px;
+	    font-size: 16px;
+	    background-color: white;
+	    background-position: 10px 10px;
+	    background-repeat: no-repeat;
+	    padding: 1px 10px 1px 10px;
+	    }
+	    }
+	    .dropdwn {
+		    position: relative;
+		    display: inline-block;
+		}
+	    .dropdown-content {
+	    	display: none;
+	    	list-style-type:none;
+		    position: absolute;
+		    z-index: 1;
+		}
+   </style>
+
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -38,7 +70,30 @@
             <li><a href="categoryList">Category</a></li>
           </ul>
         </li>
-        
+        <li>
+        <form>
+        <div class="dropdwn">
+        <div class="drp-btn">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."/>
+        <button id="searchbut" type="submit" ><i class="fa fa-search"></i></button>
+		</div>
+		<div class="dropdown-content">
+		<ul id="myUL" >
+		  <li><a href="productDetail?pid=4">American made</a></li>
+		  <li><a href="productDetail?pid=2">Doctor Strange</a></li>
+		
+		  <li><a href="productDetail?pid=5">Flatliners</a></li>
+		  <li><a href="productDetail?pid=8">Into the deep</a></li>
+		
+		  <li><a href="productDetail?pid=1">Calvin</a></li>
+		  <li><a href="#">Christina</a></li>
+		  <li><a href="#">Cindy</a></li>
+		</ul>
+		</div>
+		</div>		
+        </form>
+        </li>
+        <c:if test="<%=ses1 %>">
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Category<span class="caret"></span></a>
         <ul class="dropdown-menu">
         <c:forEach var="catVal" items="${catList}">
@@ -54,8 +109,8 @@
         </c:forEach>
         </ul>
       	</li>
-        
-        <li><a href="#">Cart</a></li>
+        </c:if>
+        <li><a href="#"><i class="fa fa-cart"></i>Cart</a></li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -73,7 +128,30 @@
       </ul>
     </div>
   </div>
-</nav>	
+</nav>
+
+<!-- function for search  -->
+   <script type="text/javascript">
+   function myFunction() {
+       var input, filter, ul, li, a, i;
+       input = document.getElementById("myInput");
+       filter = input.value.toUpperCase();
+       ul = document.getElementById("myUL");
+       li = ul.getElementsByTagName("li");
+	   cl= document.getElementsByClassName("dropdwn-content");
+	   
+       for (i = 0; i < li.length; i++) {
+    	   a = li[i].getElementsByTagName("a")[0];
+           if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        	   cl.setAttribute('style', 'display:block !important');
+        	   li[i].style.display = "";
+           } else {
+        	   li[i].style.display = "none";
+           }
+       }
+   }
+   </script>
+
 
 </body>
 </html>

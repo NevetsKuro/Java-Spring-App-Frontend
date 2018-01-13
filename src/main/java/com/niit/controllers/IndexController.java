@@ -123,6 +123,14 @@ public class IndexController {
 		return mv;
 	}
 	
+	@RequestMapping("/productDetail")
+	public ModelAndView displayProductsDetails(@RequestParam("pid")int pid){
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("prod", productDaoImpl.findByProdId(pid));
+		mv.setViewName("ProductDetails");
+		return mv;
+	}
+	
 	@RequestMapping("/prodCatList")
 	public ModelAndView getCatTable(@RequestParam("cid") int cid) {
 		ModelAndView mv = new ModelAndView();
@@ -140,6 +148,21 @@ public class IndexController {
 		return mv;
 	}
 
+	@RequestMapping("/prodCatListNav")
+	public ModelAndView getCatTableNav(@RequestParam("cid") int cid) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("prodList", productDaoImpl.getProdByCatId(cid));
+		mv.setViewName("navPages");
+		return mv;
+	}
+
+	@RequestMapping("/prodSupListNav")
+	public ModelAndView getSupTableNav(@RequestParam("sid") int sid) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("prodList", productDaoImpl.getProdBySupId(sid));
+		mv.setViewName("navPages");
+		return mv;
+	}
 	
 	@ModelAttribute
 	public void getData(Model m) {
