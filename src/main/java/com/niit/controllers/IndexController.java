@@ -1,5 +1,7 @@
 package com.niit.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -17,6 +19,7 @@ import com.Dao.CategoryDao;
 import com.Dao.ProductDao;
 import com.Dao.SupplierDao;
 import com.Dao.UserDao;
+import com.model.Product;
 import com.model.User;
 
 @Controller
@@ -62,6 +65,26 @@ public class IndexController {
 	@RequestMapping("/logout")
 	public String userLogged(){
 		return "welcomePage";
+	}
+
+	@RequestMapping("/dcmaRequest")
+	public String dcmarequest(){
+		return "dcmaRequest";
+	}
+
+	@RequestMapping("/linkRemoval")
+	public String linkremoval(){
+		return "linkRemoval";
+	}
+	
+	@RequestMapping("/terms")
+	public String termsofuse(){
+		return "Terms";
+	}
+	
+	@RequestMapping("/privacy")
+	public String privacy(){
+		return "Privacy";
 	}
 	
 	@RequestMapping(value="/userLogged")
@@ -126,8 +149,14 @@ public class IndexController {
 	@RequestMapping("/productDetail")
 	public ModelAndView displayProductsDetails(@RequestParam("pid")int pid){
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("prod", productDaoImpl.findByProdId(pid));
-		mv.setViewName("ProductDetails");
+		//mv.addObject("prod", productDaoImpl.findByProdId(pid)).isEmpty();
+		Product lp = productDaoImpl.findByProdId(pid); 
+		System.out.println("Boolean is:"+lp);
+		if(lp!=null){
+			mv.setViewName("ProductDetails");
+		}else{
+			mv.setViewName("redirect:/HomePage");
+		}
 		return mv;
 	}
 	

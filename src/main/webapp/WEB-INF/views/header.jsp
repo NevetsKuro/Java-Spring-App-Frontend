@@ -21,7 +21,7 @@
 	    box-sizing: border-box;
 	    border: 1px solid #gray;
 	    border-radius: 4px;
-	    font-size: 16px;
+	    font-size: 16px!important;
 	    background-color: white;
 	    background-position: 10px 10px;
 	    background-repeat: no-repeat;
@@ -38,11 +38,21 @@
 		    position: absolute;
 		    z-index: 1;
 		}
+		.userDisabledButton,.logoutButton, .loginButton, .signInButtton{
+			border: 1px solid #cccccc;
+			border-radius:3px; 
+			padding: 7.5px;
+		}
+		.loginButton:hover, .signInButtton:hover{
+			border: 1px solid #cccccc;
+			background-color:#cccccc;
+			border-radius:3px;  
+		}
    </style>
 
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -50,19 +60,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand active" href="Home">OrkutMovies</a>
+      <a class="navbar-brand active" href="Home">TokeiMovies</a>
     </div>
     
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <%	
         	Boolean ses1 = request.isUserInRole("ROLE_ADMIN");
-         %>
+        %>
         <li><a href="HomePage"><span class="glyphicon glyphicon-home"></span></a></li>
         <c:if test="<%=ses1 %>">
         <li><a href="goAEntry">Admin</a></li>
-        </c:if>
-        <li class="dropdown">         
+        <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin List<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="supplierList">Supplier</a></li>
@@ -70,6 +79,7 @@
             <li><a href="categoryList">Category</a></li>
           </ul>
         </li>
+        </c:if>
         <li>
         <form>
         <div class="dropdwn">
@@ -90,7 +100,7 @@
 		  <li><a href="#">Cindy</a></li>
 		</ul>
 		</div>
-		</div>		
+		</div>
         </form>
         </li>
         <c:if test="<%=ses1 %>">
@@ -110,25 +120,31 @@
         </ul>
       	</li>
         </c:if>
-        <li><a href="#"><i class="fa fa-cart"></i>Cart</a></li>
+        <li><a href="showCart"><i class="glyphicon glyphicon-shopping-cart"></i> Cart</a></li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
       <c:if test="${pageContext.request.userPrincipal.name==null}">
-        <li><a href="Register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="goToLogin"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+        <li><a href="Register"><span class="loginButton"><span class="glyphicon glyphicon-user"></span> Sign Up</span></a></li>
+        <li><a href="goToLogin"><span class="signInButton"><span class="glyphicon glyphicon-log-in"></span>Log In</span></a></li>
       </c:if>
       
       <c:if test="${pageContext.request.userPrincipal.name!=null}">
-        <li style="padding-top:14px;color:#9d9d9d;">
-        Welcome: ${pageContext.request.userPrincipal.name}</li>
-        <li><a href="${pageContext.request.contextPath}/logout"> Logout</a></li>
+        <li class="userDisabledButton" style="padding:5px;margin:9px;color:#9d9d9d;">
+        Welcome: <c:out value="${pageContext.request.userPrincipal.name}"></c:out></li>
+        <li class=""><a href="${pageContext.request.contextPath}/logout"><span class="logoutButton"> Logout</span></a></li>
       </c:if>
       
       </ul>
     </div>
   </div>
 </nav>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <!-- function for search  -->
    <script type="text/javascript">
@@ -143,7 +159,7 @@
        for (i = 0; i < li.length; i++) {
     	   a = li[i].getElementsByTagName("a")[0];
            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        	   cl.setAttribute('style', 'display:block !important');
+//         	   cl.setAttribute('style', 'display:block !important');
         	   li[i].style.display = "";
            } else {
         	   li[i].style.display = "none";
@@ -151,7 +167,6 @@
        }
    }
    </script>
-
 
 </body>
 </html>

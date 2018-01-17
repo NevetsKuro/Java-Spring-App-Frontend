@@ -3,6 +3,8 @@ package com.niit.controllers;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -57,7 +59,7 @@ public class adminController {
 	}
 
 	@RequestMapping("/goAEntry")
-	public String adminEntry(Model m){
+	public String adminEntry(Model m) {
 		m.addAttribute("catList", categoryDaoImpl.retrieve());
 		m.addAttribute("supList", supplierDaoImpl.retrieve());
 		m.addAttribute("prodList", productDaoImpl.retrieve());
@@ -88,7 +90,6 @@ public class adminController {
 		return mv;
 	}
 
-	
 	@RequestMapping(value = "/saveProd", method = RequestMethod.POST)
 	public ModelAndView saveProdData(HttpServletRequest req, @RequestParam("pFile") MultipartFile file) {
 		ModelAndView mv = new ModelAndView();
@@ -101,17 +102,17 @@ public class adminController {
 		prod.setRating(req.getParameter("pRating"));
 		prod.setReleased(req.getParameter("pReleased"));
 		prod.setStock(Integer.parseInt(req.getParameter("pStock")));
-		// SimpleDateFormat sf =new SimpleDateFormat("dd/mm/yy");
-		// prod.setDate(sf.format(req.getParameter("pDate")));
+		SimpleDateFormat sf = new SimpleDateFormat("dd/mm/yy");
+		//prod.setProddate(sf.parse(req.getParameter("pDate")));
 		prod.setCategory(categoryDaoImpl.findByCatId(Integer.parseInt(req.getParameter("pSupplier"))));
 		prod.setSupplier(supplierDaoImpl.findBySupId(Integer.parseInt(req.getParameter("pCategory"))));
 		prod.setTime(Integer.parseInt(req.getParameter("pTime")));
 		prod.setProddate(new Date());
-		
+
 		String filepath = req.getSession().getServletContext().getRealPath("/");
 		String filename = file.getOriginalFilename();
 		prod.setImgname(filename);
-
+		System.out.println(filepath);
 		try {
 			byte[] bfiles = file.getBytes();
 			BufferedOutputStream bos = new BufferedOutputStream(
@@ -131,14 +132,16 @@ public class adminController {
 		productDaoImpl.deleteProd(pid);
 		return "redirect:/productList?del";
 	}
+
 	@RequestMapping("/deleteSup/{sid}")
 	public String deleteSup(@PathVariable("sid") int sid) {
-		productDaoImpl.deleteProd(sid);
+		supplierDaoImpl.deleteSup(sid);
 		return "redirect:/productList?del";
 	}
+
 	@RequestMapping("/deleteCat/{cid}")
 	public String deleteCat(@PathVariable("cid") int cid) {
-		productDaoImpl.deleteProd(cid);
+		categoryDaoImpl.deleteCat(cid);
 		return "redirect:/productList?del";
 	}
 
@@ -165,15 +168,22 @@ public class adminController {
 		prod.setRating(req.getParameter("pRating"));
 		prod.setReleased(req.getParameter("pReleased"));
 		prod.setStock(Integer.parseInt(req.getParameter("pStock")));
-		SimpleDateFormat sf =new SimpleDateFormat("tt:mm:ss dd/mm/yy");
-		String dat = req.getParameter("pDate");
-		//prod.setProddate(sf.format("dat"));
+		String dat2 = req.getParameter("pDate");
+		Date sf = null;
+		try {
+			sf = new SimpleDateFormat("yyyy-MM-dd").parse(dat2);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			System.out.println("couldnt add date");
+		}
+		prod.setProddate(sf);
 		prod.setCategory(categoryDaoImpl.findByCatId(Integer.parseInt(req.getParameter("pSupplier"))));
 		prod.setSupplier(supplierDaoImpl.findBySupId(Integer.parseInt(req.getParameter("pCategory"))));
 		prod.setTime(Integer.parseInt(req.getParameter("pTime")));
-		
+		prod.setImgname(req.getParameter("imgName"));
+
 		productDaoImpl.update(prod);
-		mv.addObject("prodList",productDaoImpl.retrieve());
+		mv.addObject("prodList", productDaoImpl.retrieve());
 		mv.setViewName("productAdminList");
 		return mv;
 	}

@@ -98,6 +98,9 @@
 	<h4 class="input-title">Product released</h4>
 	<input class="form-control" type="text" name="pReleased" required/>
 
+	<h4 class="input-title">Product released</h4>
+	<input class="form-control" type="text" name="pDate" required/>
+
 	<h4 class="input-title">Product Price</h4>
 	<input class="form-control" type="number" name="pPrice" required/>
 

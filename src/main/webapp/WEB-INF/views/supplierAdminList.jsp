@@ -33,8 +33,8 @@
 <td> <c:out value="${sup.supname}"></c:out></td>
 <td class="span4">
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
-<a class="btn" role="button" href="${contextRoot}/Edit"><span class="glyphicon glyphicon-pencil" style="color:red"></span></a>
-<a class="btn" role="button" href="${contextRoot}/Delete"><span class="glyphicon glyphicon-remove" style="color:red"></span></a>
+<a class="btn" role="button" href="${contextRoot}/Edit/${sup.sid}"><span class="glyphicon glyphicon-pencil" style="color:red"></span></a>
+<a class="btn" role="button" href="/deleteSup/${sup.sid}"><span class="glyphicon glyphicon-remove" style="color:red"></span></a>
 </td>
 
 </tr>

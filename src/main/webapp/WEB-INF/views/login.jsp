@@ -17,11 +17,11 @@
 <form method="POST" action="${pageContext.request.contextPath}/login" >
 <!--  class="login-box" -->
 <label for="name">Name:</label>
-<input name="name" type="text" autofocus="autofocus"/>
+<input name="name" type="text" autofocus="autofocus" required/>
 
 <!--  class="login-box" -->
 <label for="password">Password:</label>
-<input name="password" type="password"/>
+<input name="password" type="password" required />
 
 	<button name="login" type="submit">Login</button>
 	<span>&nbsp;</span>

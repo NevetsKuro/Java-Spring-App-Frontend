@@ -57,6 +57,9 @@
 <td><c:out value="${p.time}"></c:out></td>
 <td><c:out value="${p.proddate}"></c:out></td>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"></c:set>
+<c:set var="root" value="${request.getSession().getServletContext().getRealPath('/')}"></c:set>
+<% String filepath = request.getSession().getServletContext().getRealPath("/"); %>
+
 <td><img src="<c:url value="/resources/items/${p.imgname}"/>" height="50px" width="50px" alt="${p.imgname}" ></td>
 
 <td class="span4">
@@ -68,5 +71,10 @@
 </table>
 
 </div>
+<p>
+here: 
+<c:out value="${contextRoot}"></c:out>
+
+</p>
 </body>
 </html>

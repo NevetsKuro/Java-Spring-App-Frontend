@@ -44,6 +44,8 @@
 	<h4 class="input-title">Product Time</h4>
 	<input class="form-control" type="number" name="pTime" value="${prod.time}" required/>
 	
+	<input type="hidden" name="imgName" value="${prod.imgname}">
+	
 	<div class="form-group">
 	<table>
 	<tr>
