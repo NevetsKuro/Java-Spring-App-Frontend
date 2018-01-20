@@ -1,6 +1,8 @@
 package com.niit.controllers;
 
 import java.security.Principal;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import com.Dao.ProductDao;
 import com.Dao.SupplierDao;
 import com.Dao.UserDao;
 import com.model.Cart;
+import com.model.Orders;
 import com.model.User;
 
 @Controller
@@ -116,5 +119,37 @@ public class CartController {
 		mv.setViewName("Cart");
 		return mv;
 	}
+	
+	@RequestMapping(value="/checkout",method=RequestMethod.GET)
+	public ModelAndView checkoutProcess(HttpServletRequest req){
+		ModelAndView mv = new ModelAndView();
+		Principal principal = req.getUserPrincipal();
+		String username = principal.getName();
+		User u = userDaoImpl.findUserByName(username);
+		List<Cart> cart = cartDaoImpl.findByCartID(username);
+		mv.addObject("user",u);
+		mv.addObject("cart", cart);
+		mv.setViewName("checkout");
+		return mv;
+	}
+	
+	@RequestMapping(value="/orderprocess", method = RequestMethod.POST)
+	public ModelAndView orderProcess(HttpServletRequest req){
+		ModelAndView mv = new  ModelAndView();
+		Orders order = new Orders();
+		Principal principal = req.getUserPrincipal();
+		String username = principal.getName();
+		Double total = Double.parseDouble(req.getParameter("total"));
+		String payment = req.getParameter("payment");
+		User u = userDaoImpl.findUserByName(username);
+		order.setUser(u);
+		order.setTotal(total);
+		order.setPayment(payment);
+		ordersDaoImpl.insertOrders(order);
+		mv.addObject("orderDetails",u);
+		mv.setViewName("ack");
+		return mv;
+	}
+	
 	
 }

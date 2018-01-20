@@ -149,7 +149,7 @@ public class IndexController {
 	@RequestMapping("/productDetail")
 	public ModelAndView displayProductsDetails(@RequestParam("pid")int pid){
 		ModelAndView mv = new ModelAndView();
-		//mv.addObject("prod", productDaoImpl.findByProdId(pid)).isEmpty();
+		mv.addObject("prod", productDaoImpl.findByProdId(pid)).isEmpty();
 		Product lp = productDaoImpl.findByProdId(pid); 
 		System.out.println("Boolean is:"+lp);
 		if(lp!=null){

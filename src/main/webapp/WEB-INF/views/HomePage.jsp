@@ -3,7 +3,6 @@
     pageEncoding="ISO-8859-1"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title> i'm a cool </title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -19,9 +18,12 @@ top:90%;
 left:6%;
 }
 .mi-img{
-/* height:300px!important; */
-/* width:200px!important; */
+height:300px!important;
+width:200px!important;
 box-shadow:2px 2px 5px 5px grey;
+}
+.col-sm-3{
+float:left;
 }
 .homepageanchor{
 text-decoration:none;
@@ -57,11 +59,14 @@ color: white;
 	color:#cccccc;
 	background-color: grey;
 }
-.col-sm-2{
+.container .col-sm-2{
+	position:sticky;
+	top:0px;
+	right:0px;
 	padding-top:10px;
 	border:2px solid #d9d9d9;
 	border-radius:5px;
-	height:2880px;
+/* 	height:2880px; */
 	background-color:#d9d9d9;
 }
 .bdy{
@@ -75,8 +80,8 @@ border-radius:3px;
 color: white;
 background-color:grey;
 }
-@media screen and (max-width: 992px) {
-	.container{
+@media screen and (max-width: 1300px) {
+	body > .container{
 		width: 100%!important;
 	}
 	.mi-title{
@@ -90,15 +95,16 @@ background-color:grey;
 <body class="bdy">
 <jsp:include page="header.jsp"></jsp:include>
 
-<div id="body-div" class="container" >
+<div id="body-div" class="container" onclick="closelist()">
 
-<div id="headings"><h2><span class="spanhead">Shop Movies Now!</span></h2></div>
+<div id="headings"><h2><span class="spanhead" onclick="closelist()">Shop Movies Now!</span></h2></div>
 <div style="display:block">
 <iframe style="width:100%; -webkit-transform:scaleX(1); border: 0px;" width="640" height="360" src="https://www.youtube.com/embed/iBFrKgaMYv4?autoplay=0&showinfo=0&controls=0&rel=0" title="compilations">
 </iframe>
 </div>
-<div class="col-sm-2">
 
+<!-- sidenav -->
+<div class="col-sm-2">
 <h2>List</h2>
 <h4 id="h4" >Genre</h4>
 <ul title="Category" >
@@ -139,7 +145,7 @@ background-color:grey;
 
 </div>
 <div class="row">
-<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pname=Deadpool">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=2">
 <img class="mi-img img-rounded img-responsive" alt="#"  src="<c:url value="/resources/items/movie1.5.jpg"/>"><span class="mi-title">Deadpool</span>
 </a></div>
 <div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=1">

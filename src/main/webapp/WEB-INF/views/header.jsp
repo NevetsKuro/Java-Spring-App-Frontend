@@ -1,19 +1,23 @@
-<%-- <%@ page language="j	ava" contentType="text/html; charset=ISO-8859-1" --%>
-<%--     pageEncoding="ISO-8859-1"%> --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style type="text/css">
+/*   	search  	 */
+  	#myli>a:hover{
+  	text-decoration: none;
+  	color: black;  
+  	}
+  	#myli{
+  	list-style-type:none;
+  	margin:0px;
+  	padding: 0px; 
+  	}
   	#searchbut{
   		height:40px;
   	}
-	input[type=text] {
+	#myInput{
 		margin-bottom:-5px;
 		margin-top:5px;
 	    width: 230px;
@@ -27,17 +31,21 @@
 	    background-repeat: no-repeat;
 	    padding: 1px 10px 1px 10px;
 	    }
-	    }
 	    .dropdwn {
 		    position: relative;
 		    display: inline-block;
 		}
-	    .dropdown-content {
+	    #dropdown-content {
 	    	display: none;
-	    	list-style-type:none;
-		    position: absolute;
+	        position: absolute;
 		    z-index: 1;
 		}
+		#myUL{
+			list-style-type:none;
+			background: #ff9999;
+			width:230px;
+		}
+/* 		other buttons	 */
 		.userDisabledButton,.logoutButton, .loginButton, .signInButtton{
 			border: 1px solid #cccccc;
 			border-radius:3px; 
@@ -47,6 +55,9 @@
 			border: 1px solid #cccccc;
 			background-color:#cccccc;
 			border-radius:3px;  
+		}
+		.active1{
+			color:white;
 		}
    </style>
 
@@ -60,12 +71,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand active" href="Home">TokeiMovies</a>
+      <span class="navbar-brand"><i class="active1"> TokeiMovies</i></span>
     </div>
     
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <%	
+        <%
         	Boolean ses1 = request.isUserInRole("ROLE_ADMIN");
         %>
         <li><a href="HomePage"><span class="glyphicon glyphicon-home"></span></a></li>
@@ -85,19 +96,19 @@
         <div class="dropdwn">
         <div class="drp-btn">
         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."/>
-        <button id="searchbut" type="submit" ><i class="fa fa-search"></i></button>
+        <button id="searchbut" type="submit" disabled="disabled"><i class="fa fa-search"></i></button>
 		</div>
-		<div class="dropdown-content">
+		<div id="dropdown-content">
 		<ul id="myUL" >
-		  <li><a href="productDetail?pid=4">American made</a></li>
-		  <li><a href="productDetail?pid=2">Doctor Strange</a></li>
+		  <li id="myli"><a href="productDetail?pid=4">American made</a></li>
+		  <li id="myli"><a href="productDetail?pid=2">Doctor Strange</a></li>
 		
-		  <li><a href="productDetail?pid=5">Flatliners</a></li>
-		  <li><a href="productDetail?pid=8">Into the deep</a></li>
+		  <li id="myli"><a href="productDetail?pid=5">Flatliners</a></li>
+		  <li id="myli"><a href="productDetail?pid=8">Into the deep</a></li>
 		
-		  <li><a href="productDetail?pid=1">Calvin</a></li>
-		  <li><a href="#">Christina</a></li>
-		  <li><a href="#">Cindy</a></li>
+		  <li id="myli"><a href="productDetail?pid=2">Deadpool</a></li>
+		  <li id="myli"><a href="#">Christina</a></li>
+		  <li id="myli"><a href="#">Cindy</a></li>
 		</ul>
 		</div>
 		</div>
@@ -132,7 +143,7 @@
       <c:if test="${pageContext.request.userPrincipal.name!=null}">
         <li class="userDisabledButton" style="padding:5px;margin:9px;color:#9d9d9d;">
         Welcome: <c:out value="${pageContext.request.userPrincipal.name}"></c:out></li>
-        <li class=""><a href="${pageContext.request.contextPath}/logout"><span class="logoutButton"> Logout</span></a></li>
+        <li class=""><a href="${pageContext.request.contextPath}/logout"><span class="logoutButton"><i class="glyphicon glyphicon-log-out"></i> Logout</span></a></li>
       </c:if>
       
       </ul>
@@ -154,17 +165,23 @@
        filter = input.value.toUpperCase();
        ul = document.getElementById("myUL");
        li = ul.getElementsByTagName("li");
-	   cl= document.getElementsByClassName("dropdwn-content");
+	   cl= document.getElementById("dropdown-content");
 	   
        for (i = 0; i < li.length; i++) {
     	   a = li[i].getElementsByTagName("a")[0];
            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-//         	   cl.setAttribute('style', 'display:block !important');
-        	   li[i].style.display = "";
+        	   cl.style.display="block";
            } else {
         	   li[i].style.display = "none";
            }
        }
+   }
+   function closelist(){
+	   document.getElementById("myUL").style.display = "none";
+	   document.getElementById("myInput").value="";
+   }
+   function showlist(){
+	   document.getElementById("myUL").style.display = "";
    }
    </script>
 

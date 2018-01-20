@@ -52,9 +52,12 @@ color: black;
 #leftitems:hover{
 	background-color: gray;
 }
+#navPagesbdy{
+	background-color: #cccccc;
+}
 </style>
 </head>
-<body>
+<body id="navPagesbdy">
 <jsp:include page="header.jsp"></jsp:include>
 <div class="main.div">
 <!-- Left navigation -->

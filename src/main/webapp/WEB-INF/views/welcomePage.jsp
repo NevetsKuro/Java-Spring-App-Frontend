@@ -18,8 +18,11 @@
   </script>
   <style type="text/css">
   	#MyCarousel{
-  		position: relative;
+  		width:100%;
+  		height:100%;
+  		position:fixed;
     	display:block;
+    	z-index:-1;
   	}
   	body {
 	  min-height : 100%;
@@ -52,20 +55,39 @@
   	.carousel-caption{
   		bottom:20%;
   	}
+/*   	bottom Bar	 */  	
+#bottom{
+width:100%;
+position:absolute;
+bottom:1px;
+border:1px solid black;
+display:none;
+background-color:hsla(0, 100%, 70%, 0.3);
+z-index:-1;
+height:140px;
+}
+#btn{
+opacity:0.5;
+background:linear-gradient(white,black);
+height:50px;
+position:absolute;
+bottom:0px;
+width:100%;
+z-index:-1;
+border:0px;
+color:red;
+}
+.inner-img{
+padding:20px;
+} 	
   </style>
 </head>
 <body>
-
+<div id="MyCarousel" onclick="closed()">
 <div class="fluid-container">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-  	  <li data-target="#myCarousel" data-slide-to="2"></li>  
-    </ol>
-
+    
     
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
@@ -135,5 +157,24 @@
       <span class="sr-only">Next</span>
     </a>
 </div>
+</div>
+<button id="btn" onclick="show()"><span class="glyphicon glyphicon-triangle-top"></span></button>
+<div id="bottom">
+<div class="col-xs-3"><a href="#"><img src="<c:url value="/resources/items/moviee.jpg"></c:url>" alt="animation movie" class="inner-img img-responsive" onclick="closed()"></a></div>
+<div class="col-xs-3"><a href="#"><img src="<c:url value="/resources/items/moviee2.jpg"></c:url>" alt="animation movie" class="inner-img img-responsive" onclick="closed()"></a></div>
+<div class="col-xs-3"><a href="#"><img src="<c:url value="/resources/items/moviee3.jpg"></c:url>" alt="animation movie" class="inner-img img-responsive" onclick="closed()"></a></div>
+<div class="col-xs-3"><a href="#"><img src="<c:url value="/resources/items/moviee4.jpg"></c:url>" alt="animation movie" class="inner-img img-responsive" onclick="closed()"></a></div>
+</div>
+<script>
+function show(){
+	document.getElementById("btn").style.display = "none";
+	document.getElementById("bottom").style.display = "block";
+}
+function closed(){
+	document.getElementById("btn").style.display = "block";
+	document.getElementById("bottom").style.display = "none";
+}
+</script>
+
 </body>
 </html>

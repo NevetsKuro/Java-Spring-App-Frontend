@@ -66,27 +66,29 @@ public class adminController {
 		return "adminEntry";
 	}
 
+	//@RequestParam("cid") int cid,
 	@RequestMapping(value = "/saveCat", method = RequestMethod.POST)
 	@Transactional
-	public ModelAndView saveCatData(@RequestParam("cid") int cid, @RequestParam("cname") String cname) {
+	public ModelAndView saveCatData( @RequestParam("cname") String cname) {
 		ModelAndView mv = new ModelAndView();
 		Category cat = new Category();
-		cat.setCid(cid);
+		//cat.setCid(cid);
 		cat.setCatname(cname);
 		categoryDaoImpl.insertCategory(cat);
-		mv.setViewName("adminEntry");
+		mv.setViewName("modal");
 		return mv;
 	}
 
+//	@RequestParam("sid") int sid,
 	@RequestMapping(value = "/saveSup", method = RequestMethod.POST)
 	@Transactional
-	public ModelAndView saveSupData(@RequestParam("sid") int sid, @RequestParam("sname") String sname) {
+	public ModelAndView saveSupData( @RequestParam("sname") String sname) {
 		ModelAndView mv = new ModelAndView();
 		Supplier sup = new Supplier();
-		sup.setSid(sid);
+		//sup.setSid(sid);
 		sup.setSupname(sname);
 		supplierDaoImpl.insertSupplier(sup);
-		mv.setViewName("adminEntry");
+		mv.setViewName("modal");
 		return mv;
 	}
 
@@ -94,7 +96,7 @@ public class adminController {
 	public ModelAndView saveProdData(HttpServletRequest req, @RequestParam("pFile") MultipartFile file) {
 		ModelAndView mv = new ModelAndView();
 		Product prod = new Product();
-		prod.setId(Integer.parseInt(req.getParameter("pid")));
+		//prod.setId(Integer.parseInt(req.getParameter("pid")));
 		prod.setName(req.getParameter("pName"));
 		prod.setPrice(Double.parseDouble(req.getParameter("pPrice")));
 		prod.setDescription(req.getParameter("pDescription"));
@@ -123,7 +125,7 @@ public class adminController {
 			System.out.println(e.getMessage());
 		}
 		productDaoImpl.insertProduct(prod);
-		mv.setViewName("adminEntry");
+		mv.setViewName("modal");
 		return mv;
 	}
 

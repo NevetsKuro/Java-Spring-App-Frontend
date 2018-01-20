@@ -10,20 +10,24 @@
 
 </head>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 <div class="container">
-<hr>
-<div class="modal fade eg-demo-modal-sm" tabindex="1" role="dialog" aria-labelledby="myModal" aria-hidden="true" id="onload">
+<div class="modal fade bs-example-modal-sm" tabindex="1" role="dialog" aria-labelledby="myModal" aria-hidden="true" id="onload">
 
 <div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<div class="modal-header"></div>
+			<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal">X</button>
 			</div>
 			<div class="modal-body">Added Successfully!!!</div>
 			<div class="modal-footer"><a href="goAEntry" class="btn btn-primary" role="button"></a></div>
 		</div>
+		</div>
 </div>
-
 </div>
+<script>
+$(document).ready(function(){
+$('#onload').modal('show');});
+</script>
 </body>
 </html>

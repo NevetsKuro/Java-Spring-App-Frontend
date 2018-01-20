@@ -8,19 +8,44 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+th{
+text-align: center;
+border-left:1px solid #cccccc;
+background-color: #f2f2f2;
+}
+#api{
+text-align:center;
+border-top:1px solid #cccccc;
+background-color: #f2f2f2;
+}
+.btn{
+box-shadow: 3px 3px 3px; 
+}
+#mainbody{
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+}
+</style>
 </head>
-<body>
+<body id="mainbody" background="<c:url value="/resources/items/wallpprs4.jpg"></c:url>" >
 
 <jsp:include page="header.jsp"></jsp:include>
 
-<div class="container">
-<table class="table table-hover" id="api" class="display" border="1">
+<div class="container table-responsive">
+<h2>Supplier List</h2>
+<hr/>
+<table class="table table-hover" id="api">
+<thead>
 <tr>
-<td>Index</td>
-<td>Supplier Id</td>
-<td>Supplier Name</td>
-<td>Action</td>
+<th class="info">Index</th>
+<th>Id</th>
+<th>Name</th>
+<th class="danger">Action</th>
 </tr>
+</thead>
+<tbody>
 <c:if test="${empty supList}">
 <tr align="center">
 <td colspan="10">The supplier list is empty!!</td>
@@ -36,10 +61,9 @@
 <a class="btn" role="button" href="${contextRoot}/Edit/${sup.sid}"><span class="glyphicon glyphicon-pencil" style="color:red"></span></a>
 <a class="btn" role="button" href="/deleteSup/${sup.sid}"><span class="glyphicon glyphicon-remove" style="color:red"></span></a>
 </td>
-
 </tr>
 </c:forEach>
-
+</tbody>
 </table>
 </div>
 </body>

@@ -21,7 +21,7 @@
 
 <!--  class="login-box" -->
 <label for="password">Password:</label>
-<input name="password" type="password" required />
+<input name="password" type="password" required/>
 
 	<button name="login" type="submit">Login</button>
 	<span>&nbsp;</span>

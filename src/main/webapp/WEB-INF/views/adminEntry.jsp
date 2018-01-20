@@ -36,16 +36,16 @@
 </ul>
 </div>
 
-<div class="panel-body"> 
-<div class="tab-content">
+<div class="panel-body" style="margin-left: 10px;"> 
+<div class="tab-content" >
 
 <!-- Supplier Tab -->
 <div class="tab-pane fade in active" id="tab1">
 	<form method="post" action="saveSup" class="form-signin">
 	<span id="reauth-email" class="reauth-email"></span>
 	
-	<h4 class="input-title">Supplier Id</h4>
-	<input class="form-control" type="number" name="sid" required/>
+<!-- 	<h4 class="input-title">Supplier Id</h4> -->
+<!-- 	<input class="form-control" type="number" name="sid" required/> -->
 	
 	<h4 class="input-title">Supplier Name</h4>
 	<input class="form-control" type="text" name="sname" required/>
@@ -61,10 +61,7 @@
 <div class="tab-pane fade" id="tab2">
 	<form method="post" action="saveCat" class="form-signin">
 	<span id="reauth-email" class="reauth-email"></span>
-	
-	<h4 class="input-title">Category Id</h4>
-	<input class="form-control" type="number" name="cid" required/>
-	
+		
 	<h4 class="input-title">Category Name</h4>
 	<input class="form-control" type="text" name="cname" required/>
 	
@@ -80,9 +77,6 @@
 	<form method="post" action="saveProd" class="form-signin" enctype="multipart/form-data">
 	<span id="reauth-email" class="reauth-email"></span>
 	
-	<h4 class="input-title">Product Id</h4>
-	<input class="form-control" type="number" name="pid" required/>
-	
 	<h4 class="input-title">Product Name</h4>
 	<input class="form-control" type="text" name="pName" required/>
 	
@@ -97,9 +91,6 @@
 	
 	<h4 class="input-title">Product released</h4>
 	<input class="form-control" type="text" name="pReleased" required/>
-
-	<h4 class="input-title">Product released</h4>
-	<input class="form-control" type="text" name="pDate" required/>
 
 	<h4 class="input-title">Product Price</h4>
 	<input class="form-control" type="number" name="pPrice" required/>
@@ -159,7 +150,6 @@
 </div>
 </div>
 </div>
-
 
 <div class="col-md-3">&nbsp;</div>
 <div> 
