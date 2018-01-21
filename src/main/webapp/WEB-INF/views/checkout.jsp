@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -8,6 +9,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+*{
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+</style>
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
@@ -48,7 +54,7 @@
 <option value="Net">Net Banking</option>
 </select><br><br>
 <div>
-<div><label for="name-on-card">Name:<input type="text" name="name-on-card" style="height:30px;"></div>
+<div><label for="name-on-card">Name:</label><input type="text" name="name-on-card" style="height:30px;"></div>
 <div><label for="card-number">Card Number:</label><input type="number" name="card-number" style="height:30px;"></div><br>
 <div><input type="hidden" name="total" value="${gtot}"> </div>
 </div>

@@ -1,6 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
 <html>
 <head>
 <title> i'm a cool </title>
@@ -89,14 +90,34 @@ background-color:grey;
 		height: 100px;
 	}
 }
+#myTopToBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  outline: none;
+  border:1px solid black; 
+  background-color: black;
+  color: white;
+  font-size:17px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 30px;
+  transition-duration:width 2s, height 2s;
+} 
+#myTopToBtn:hover{
+width:50px;
+height:50px;
+}
 </style>
 </head>
 
 <body class="bdy">
+<button onclick="topFunction()" id="myTopToBtn" title="Go to top"><i class="glyphicon glyphicon-chevron-up" ></i></button>
 <jsp:include page="header.jsp"></jsp:include>
 
 <div id="body-div" class="container" onclick="closelist()">
-
 <div id="headings"><h2><span class="spanhead" onclick="closelist()">Shop Movies Now!</span></h2></div>
 <div style="display:block">
 <iframe style="width:100%; -webkit-transform:scaleX(1); border: 0px;" width="640" height="360" src="https://www.youtube.com/embed/iBFrKgaMYv4?autoplay=0&showinfo=0&controls=0&rel=0" title="compilations">
@@ -290,8 +311,27 @@ background-color:grey;
 </div>
 </div>
 </div>
+
 <div class="container">
 	<jsp:include page="footer.jsp"></jsp:include>
 </div>
+
+<script type="text/javascript">
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myTopToBtn").style.display = "block";
+    } else {
+        document.getElementById("myTopToBtn").style.display = "none";
+    }
+}
+
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
+</script>
 </body>
 </html>

@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style type="text/css">
 .container,body{
 	background-color: #FF3838;
@@ -27,33 +29,20 @@ h1{
  padding:20px;
   color: white;
 }
+.err{
+color:red;
+padding: 2px;
+}
+
+input.ng-invalid {
+	border-color: red;
+}
+input.ng-valid {
+    border-color:lightgreen;
+}
 </style>
-<script>
-function validateForm() {
-    var x = document.getElementById("regname").value;
-    document.getElementById("regname").style.borderColor = "red";
-    if (x == "") {
-    	document.getElementById("regname").style.borderColor = "red";
-    }
-    else{
-    	document.getElementById("regname").style.borderColor = "";
-    }
-}
-function enableIf(){
-	var ch = document.getElementById("regname").style.borderColor;
-	if(ch=="red"){
-		document.getElementById("submit").disabled = "true";
-    }
-    else{
-    	document.getElementById("submit").disabled = "";
-    }
-}
-
-</script>
 </head>
-<body>
-
-<%-- <jsp:include page="welcomePage.jsp"/> --%>
+<body ng-app="">
 <div class="container">
 
 <h1>Registration Page</h1>
@@ -63,41 +52,58 @@ function enableIf(){
 <div class="form-group">
 <form:errors path="name" cssClass="err"/><br>
 	<label for="regname">Name:</label>
-	<form:input name="regname" id="regname" path="name" class="form-control" onmouseout="return validateForm()"/>
+	<form:input name="regname" id="regname" path="name" class="form-control" ng-model="myName" required="true" pattern=".{6,}"/>
 </div>
 <div class="form-group">
 <form:errors path="email" cssClass="err"/><br>
 	<label for="regemail">E-mail:</label>
-	<form:input id="regemail" path="email" class="form-control"/>
+	<form:input id="regemail" type="email" path="email" class="form-control" ng-model="myEmail" required="true" pattern=".{6,}"/>
 </div>
 <div class="form-group">
 <form:errors path="place" cssClass="err"/><br>
 	<label for="regplace">Place:</label>
-	<form:input name="regname" id="regplace" path="place" class="form-control"/>
+	<form:input name="regname" id="regplace" path="place" class="form-control" ng-model="myPlace" required="true" pattern=".{6,}"/>
 </div>
 <div class="form-group">
 <form:errors path="password" cssClass="err"/><br>
 	<label for="regpwd">Password:</label>
-	<form:input id="regpwd" type="password" path="password" class="form-control"/>
+	<form:input id="regpwd" type="password" path="password" class="form-control" ng-model="myPwd" required="true" pattern=".{6,}"/>
 </div>
 <div class="form-group">
 	<label for="cpassword">Confirm-Password:</label>
-	<form:input id="cpassword" path="password" type="password" class="form-control"/>
+	<form:input id="cpassword" path="password" type="password" class="form-control" ng-model="myPwd2" required="true" pattern=".{6,}" onmouseover="chkPwd()"/>
 </div>
 <div class="form-group" >
 	<label for="gender">Gender</label>
-	<form:radiobutton path="gender" value="M" label="M"/>
-	<form:radiobutton path="gender" value="F" label="F"/>
+	<form:radiobutton path="gender" value="M" label="M" required="true" ng-model="gender"/>
+	<form:radiobutton path="gender" value="F" label="F" required="true" ng-model="gender"/>
+	<div ng-switch="gender">
+	<div ng-switch-when="M">
+    	<i>Male </i><i class="fa fa-male" aria-hidden="true"></i>
+  	</div>
+  	<div ng-switch-when="F">
+     	<i>Female </i> <i class="fa fa-female" aria-hidden="true"></i>
+	</div>
+	</div>
 </div>
-<button class="btn btn-default" type="submit" id="submit" onmouseover="return enableIf()">Submit</button>
+<button class="btn btn-default" type="submit" id="submit">Submit</button>
 <button class="btn btn-default" type="reset">Reset</button>
 </form:form>
 </div>
 </div>
-
 <script type="text/javascript">
+var password = document.getElementById("regpwd");
+var confirm_password = document.getElementById("cpassword");
 
-
+function validatePassword(){
+if(password.value != confirm_password.value) {
+  confirm_password.setCustomValidity("Passwords Don't Match");
+} else {
+  confirm_password.setCustomValidity('');
+}
+}
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
 </script>
 </body>
 </html>

@@ -17,6 +17,9 @@
   });
   </script>
   <style type="text/css">
+  	*{
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	}
   	#MyCarousel{
   		width:100%;
   		height:100%;

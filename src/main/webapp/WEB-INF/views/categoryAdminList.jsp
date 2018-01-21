@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
 <title>Category Table</title>
@@ -25,6 +26,9 @@ box-shadow: 3px 3px 3px;
 background-repeat: no-repeat;
 background-position: center;
 background-size: cover;
+}
+*{
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 </style>
 </head>
@@ -56,8 +60,7 @@ background-size: cover;
 <td> <c:out value="${cat.catname}"></c:out></td>
 <td class="span4">
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
-<a class="btn" role="button" href="${contextRoot}/Edit?sid=${cat.cid}"><span class="glyphicon glyphicon-pencil" style="color:red"></span></a>
-<a class="btn" role="button" href="/deleteCat/${cat.cid}"><span class="glyphicon glyphicon-remove" style="color:red"></span></a>
+<a class="btn" role="button" href="deleteCat/${cat.cid}"><span class="glyphicon glyphicon-remove" style="color:red"></span></a>
 </td>
 </tr>
 </c:forEach>

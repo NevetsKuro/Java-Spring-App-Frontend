@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -58,8 +59,7 @@ background-size: cover;
 <td> <c:out value="${sup.supname}"></c:out></td>
 <td class="span4">
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
-<a class="btn" role="button" href="${contextRoot}/Edit/${sup.sid}"><span class="glyphicon glyphicon-pencil" style="color:red"></span></a>
-<a class="btn" role="button" href="/deleteSup/${sup.sid}"><span class="glyphicon glyphicon-remove" style="color:red"></span></a>
+<a class="btn" role="button" href="deleteSup/${sup.sid}"><span class="glyphicon glyphicon-remove" style="color:red"></span></a>
 </td>
 </tr>
 </c:forEach>

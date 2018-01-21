@@ -138,13 +138,13 @@ public class adminController {
 	@RequestMapping("/deleteSup/{sid}")
 	public String deleteSup(@PathVariable("sid") int sid) {
 		supplierDaoImpl.deleteSup(sid);
-		return "redirect:/productList?del";
+		return "redirect:/supplierList?del";
 	}
 
 	@RequestMapping("/deleteCat/{cid}")
 	public String deleteCat(@PathVariable("cid") int cid) {
 		categoryDaoImpl.deleteCat(cid);
-		return "redirect:/productList?del";
+		return "redirect:/categoryList?del";
 	}
 
 	@RequestMapping("/updateProd")
