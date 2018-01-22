@@ -52,26 +52,26 @@ input.ng-valid {
 <div class="form-group">
 <form:errors path="name" cssClass="err"/><br>
 	<label for="regname">Name:</label>
-	<form:input name="regname" id="regname" path="name" class="form-control" ng-model="myName" required="true" pattern=".{6,}"/>
+	<form:input name="regname" id="regname" path="name" class="form-control" ng-model="myName" required="true" pattern=".{6,}" placeholder="Your Name..."/>
 </div>
 <div class="form-group">
 <form:errors path="email" cssClass="err"/><br>
 	<label for="regemail">E-mail:</label>
-	<form:input id="regemail" type="email" path="email" class="form-control" ng-model="myEmail" required="true" pattern=".{6,}"/>
+	<form:input id="regemail" type="email" path="email" class="form-control" ng-model="myEmail" required="true" pattern=".{6,}" placeholder="Your Email-Id..."/>
 </div>
 <div class="form-group">
 <form:errors path="place" cssClass="err"/><br>
 	<label for="regplace">Place:</label>
-	<form:input name="regname" id="regplace" path="place" class="form-control" ng-model="myPlace" required="true" pattern=".{6,}"/>
+	<form:input name="regname" id="regplace" path="place" class="form-control" ng-model="myPlace" required="true" pattern=".{6,}"  placeholder="Your Place"/>
 </div>
 <div class="form-group">
 <form:errors path="password" cssClass="err"/><br>
 	<label for="regpwd">Password:</label>
-	<form:input id="regpwd" type="password" path="password" class="form-control" ng-model="myPwd" required="true" pattern=".{6,}"/>
+	<form:input id="regpwd" type="password" path="password" class="form-control" ng-model="myPwd" required="true" pattern=".{6,}"  placeholder="Password"/>
 </div>
 <div class="form-group">
 	<label for="cpassword">Confirm-Password:</label>
-	<form:input id="cpassword" path="password" type="password" class="form-control" ng-model="myPwd2" required="true" pattern=".{6,}" onmouseover="chkPwd()"/>
+	<form:input id="cpassword" path="password" type="password" class="form-control" ng-model="myPwd2" required="true" pattern=".{6,}" onmouseover="chkPwd()"  placeholder="Confirm Password"/>
 </div>
 <div class="form-group" >
 	<label for="gender">Gender</label>

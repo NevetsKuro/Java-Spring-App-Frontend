@@ -5,13 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>List</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <style type="text/css">
 *{
 	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 #navdiv{
-margin:14px;
+margin:15px;
 width: 160;
 height: 260;
 border: 1px solid black;
@@ -36,6 +40,9 @@ float:left;
 #ads{
 margin:10px;
 text-decoration: none;
+color: black;
+}
+#block{
 color: black;
 }
 #h4{
@@ -85,12 +92,12 @@ color: black;
 <!-- Right navigation -->
 <div class="rightdiv">
 <c:forEach var="prod" items="${prodList}">
-<div id="navdiv"><a href="productDetail?pid=${prod.id}">
+<div class="thumbnail" id="navdiv"><a href="productDetail?pid=${prod.id}">
 <img class="img img-rounded img-responsive" 
 	style="width:150px;height:250px;display:relative;" alt="1" 
 		src="<c:url value="/resources/items/${prod.imgname}"/>"
 		/>
-<span id="ads"><span id="#span1"><c:out value="${prod.name}"></c:out></span>&nbsp;&nbsp;<span style="padding-left: 100px;"> &#8377;<c:out value="${prod.price}"></c:out></span></span>
+<span id="block"><span id="#span1"><c:out value="${prod.name}"></c:out></span><br>&nbsp;&nbsp;<span style="padding-left: 60px;right: 1px;"> &#8377;<c:out value="${prod.price}"></c:out></span></span>
 </a></div>
 </c:forEach>
 </div>

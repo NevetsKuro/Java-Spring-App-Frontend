@@ -26,11 +26,11 @@
 <form method="POST" action="${pageContext.request.contextPath}/login" >
 <!--  class="login-box" -->
 <label for="name">Name:</label>
-<input name="name" type="text" autofocus="autofocus" required/>
+<input name="name" type="text" autofocus="autofocus" placeholder="your name.." required/>
 
 <!--  class="login-box" -->
 <label for="password">Password:</label>
-<input id="password" name="password" type="password" required/>
+<input id="password" name="password" type="password" placeholder="password.." required/>
 	<div class="checkbox">
     <label><input id="cb" type="checkbox" class="bg-primary" onclick="myVisibility()"/> Show Password</label>
   </div>

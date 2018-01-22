@@ -148,16 +148,16 @@ height:50px;
 <div class="col-sm-10">
 <div class="row">
 <div class="col-sm-3">
-<a class="homepageanchor" href="productDetail?pid=4">
+<a class="homepageanchor" href="productDetail?pid=35">
 <img class=" mi-img img-rounded img-responsive" alt="1" src="<c:url value="/resources/items/movie1.1.jpg"/>"><span class="mi-title">American made</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=5">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=36">
 <img class="mi-img img-rounded img-responsive"  alt="2" src="<c:url value="/resources/items/movie1.2.jpg"/>"><span class="mi-title">FlatLiners</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=6">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=37">
 <img class="mi-img img-rounded img-responsive"  alt="3" src="<c:url value="/resources/items/movie1.3.jpg"/>"><span class="mi-title">American Assassin</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=7">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=38">
 <img class="mi-img img-rounded img-responsive"  alt="4" src="<c:url value="/resources/items/movie1.4.jpg"/>"><span class="mi-title">The Witching</span>
 </a></div>
 <div>
@@ -166,16 +166,16 @@ height:50px;
 
 </div>
 <div class="row">
-<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=2">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=39">
 <img class="mi-img img-rounded img-responsive" alt="#"  src="<c:url value="/resources/items/movie1.5.jpg"/>"><span class="mi-title">Deadpool</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=1">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=40">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.6.jpg"/>"><span class="mi-title">Stream</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=3">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=41">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.7.jpg"/>"><span class="mi-title">Burning man</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=2">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=42">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.8.jpg"/>"><span class="mi-title">Doctor Strange</span>
 </a></div>
 <div>
@@ -184,16 +184,16 @@ height:50px;
 
 </div>
 <div class="row">
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=43">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;"src="<c:url value="/resources/items/movie1.9.jpg"/>"><span class="mi-title">Reign of Fire</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=44">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;"src="<c:url value="/resources/items/movie1.10.jpg"/>"><span class="mi-title">Baby Driver</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=45">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.11.jpg"/>"><span class="mi-title">IT</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=46">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.12.jpg"/>"><span class="mi-title">The heart of the Sea</span>
 </a></div>
 <div>
@@ -202,16 +202,16 @@ height:50px;
 
 </div>
 <div class="row">
-<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pname=Into the deep">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=47">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.13.jpg"/>"><span class="mi-title">Into the Deep</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=48">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.14.jpg"/>"><span class="mi-title">The Bid Sick</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=49">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.15.jpg"/>"><span class="mi-title">LIFE</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href=productDetail?pid=50">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.16.jpg"/>"><span class="mi-title">Birth of the dragon</span>
 </a></div>
 <div>
@@ -220,16 +220,16 @@ height:50px;
 
 </div>
 <div class="row">
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=51">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.17.jpg"/>"><span class="mi-title">###</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=52">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.18.jpg"/>"><span class="mi-title">###</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=53">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.19.jpg"/>"><span class="mi-title">###</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=54">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.20.jpg"/>"><span class="mi-title">###</span>
 </a></div>
 <div>
@@ -238,16 +238,16 @@ height:50px;
 
 </div>
 <div class="row">
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=55">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.21.jpg"/>"><span class="mi-title">###</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=56">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.22.jpg"/>"><span class="mi-title">###</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=57">
 <img class="mi-img img-rounded img-responsive" alt="#" src="<c:url value="/resources/items/movie1.23.jpg"/>"><span class="mi-title">###</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=58">
 <img class="mi-img img-rounded img-responsive" alt="#" src="<c:url value="/resources/items/movie1.24.jpg"/>"><span class="mi-title">###</span>
 </a></div>
 <div>
@@ -256,16 +256,16 @@ height:50px;
 
 </div>
 <div class="row">
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=59">
 <img class="mi-img img-rounded img-responsive" alt="#" src="<c:url value="/resources/items/movie1.25.jpg"/>"><span class="mi-title">###</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=60">
 <img class="mi-img img-rounded img-responsive" alt="#" src="<c:url value="/resources/items/movie1.26.jpg"/>"><span class="mi-title">###</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=61">
 <img class="mi-img img-rounded img-responsive" alt="#" src="<c:url value="/resources/items/movie1.27.jpg"/>"><span class="mi-title">###</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=62">
 <img class="mi-img img-rounded img-responsive" alt="#" src="<c:url value="/resources/items/movie1.28.jpg"/>"><span class="mi-title">###</span>
 </a></div>
 </div>
@@ -274,16 +274,16 @@ height:50px;
 </div>
 
 <div class="row">
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=63">
 <img class="mi-img img-rounded img-responsive" alt="#" src="<c:url value="/resources/items/movie1.29.jpg"/>"><span class="mi-title">###</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=64">
 <img class="mi-img img-rounded img-responsive" alt="#" src="<c:url value="/resources/items/movie1.30.jpg"/>"><span class="mi-title">###</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=65">
 <img class="mi-img img-rounded img-responsive" alt="#" src="<c:url value="/resources/items/movie1.31.jpg"/>"><span class="mi-title">###</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href="#">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=66">
 <img class="mi-img img-rounded img-responsive" alt="#" src="<c:url value="/resources/items/movie1.32.jpg"/>"><span class="mi-title">###</span>
 </a></div>
 </div>
@@ -292,16 +292,16 @@ height:50px;
 </div>
 
 <div class="row">
-<div class="col-sm-3"><a href="#">
+<div class="col-sm-3"><a href="productDetail?pid=67">
 <img class="mi-img img-rounded img-responsive" alt="#" src="<c:url value="/resources/items/movie1.33.jpg"/>"><span class="mi-title">###</span>
 </a></div>
-<div class="col-sm-3"><a href="#">
+<div class="col-sm-3"><a href="productDetail?pid=68">
 <img class="mi-img img-rounded img-responsive" alt="#" src="<c:url value="/resources/items/movie1.34.jpg"/>"><span class="mi-title">###</span>
 </a></div>
-<div class="col-sm-3"><a href="#">
+<div class="col-sm-3"><a href="productDetail?pid=69">
 <img class="mi-img img-rounded img-responsive" alt="#" src="<c:url value="/resources/items/movie1.35.jpg"/>"><span class="mi-title">###</span>
 </a></div>
-<div class="col-sm-3"><a href="#">
+<div class="col-sm-3"><a href="productDetail?pid=70">
 <img class="mi-img img-rounded img-responsive" alt="#" src="<c:url value="/resources/items/movie1.36.jpg"/>"><span class="mi-title">###</span>
 </a></div>
 <div>
@@ -326,12 +326,10 @@ function scrollFunction() {
         document.getElementById("myTopToBtn").style.display = "none";
     }
 }
-
 function topFunction() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
-
 </script>
 </body>
 </html>

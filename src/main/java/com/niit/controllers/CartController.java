@@ -140,7 +140,12 @@ public class CartController {
 		Principal principal = req.getUserPrincipal();
 		String username = principal.getName();
 		Double total = Double.parseDouble(req.getParameter("total"));
+		
 		String payment = req.getParameter("payment");
+		//changes
+		//		List<Cart> cart = cartDaoImpl.findByCartID(username);
+		//		System.out.println(cart.get(5));
+		//		productDaoImpl.findStockByProdId(cart.get(5).toString());
 		User u = userDaoImpl.findUserByName(username);
 		order.setUser(u);
 		order.setTotal(total);
@@ -150,6 +155,4 @@ public class CartController {
 		mv.setViewName("ack");
 		return mv;
 	}
-	
-	
 }

@@ -65,7 +65,7 @@ position:absolute;
 bottom:1px;
 border:1px solid black;
 display:none;
-background-color:hsla(0, 100%, 70%, 0.3);
+background-color:hsla(0, 0%, 0%, 0.3);
 z-index:-1;
 height:140px;
 }
@@ -81,11 +81,100 @@ border:0px;
 color:red;
 }
 .inner-img{
-padding:20px;
-} 	
+padding:10px;
+border:0px solid white;
+border-radius:10px; 
+}
+#overlay,#overlay2,#overlay3,#overlay4 {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+#overlay{
+z-index: 2;
+}
+#overlay2{
+z-index: 2;
+}
+#overlay3{
+z-index: 2;
+}
+#overlay4{
+z-index: 2;
+}
+#image{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    color: white;
+}
+#image .overlay-img{
+	height: 100%;
+	width: 100%;
+}
+.close{
+	position: absolute;
+	top:5%;
+	left: 90%;
+	padding:10px;
+	color: black;
+	background-color:white;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+.info{
+position:absolute;
+top: 45%;
+left:65%;
+bottom:10%;
+color:black;
+font-weight:lighter;
+padding:15px;
+border-radius: 5px;
+background: rgba(255,255,255,0.5);
+}
+.bold{
+font-weight: bolder;
+}
   </style>
 </head>
 <body>
+
+<div id="overlay">
+  <div id="image"><img src="<c:url value="/resources/items/moviee-overlay.jpg"></c:url>" alt="animation movie" class="overlay-img img-responsive">
+  		<span class="close" onclick="off()">X</span>
+  		<p class="info">Before she was<b>Wonder Woman</b>(Gal Gadot), she was Diana, princess of the Amazons, trained to be an unconquerable warrior. Raised on a sheltered island paradise, Diana meets an American pilot (Chris Pine) who tells her about the massive conflict that's raging in the outside world. </p>
+  	</div>
+</div>
+<div id="overlay2">
+  <div id="image"><img src="<c:url value="/resources/items/moviee-overlay2.jpg"></c:url>" alt="animation movie" class="overlay-img img-responsive">
+  		<span class="close" onclick="off2()">X</span>
+  		<p class="info"><b>Black Panther</b> is an upcoming American superhero film based on the Marvel Comics character of the same name, produced by Marvel Studios and distributed by Walt Disney Studios Motion Pictures. It is intended to be the eighteenth film in the Marvel Cinematic Universe.</p>
+  </div>
+</div>
+<div id="overlay3">
+  <div id="image"><img src="<c:url value="/resources/items/moviee-overlay3.jpg"></c:url>" alt="animation movie" class="overlay-img img-responsive">
+  		<span class="close" onclick="off3()">X</span>
+  		<p class="info">Aron Ralston, a mountain climber, is on a hiking adventure in Utah when he gets trapped in a canyon. Soon, he takes desperate measures to survive and struggles for <b>127 hours</b> before he is rescued.</p>
+  </div>
+</div>
+<div id="overlay4">
+  <div id="image"><img src="<c:url value="/resources/items/moviee-overlay4.jpg"></c:url>" alt="animation movie" class="overlay-img img-responsive">
+  		<span class="close" onclick="off4()">X</span>
+  		<p class="info"> <b>Sherlock Holmes</b> is a fictional private detective created by British author Sir Arthur Conan Doyle. Known as a "consulting detective" in the stories, Holmes is known for his proficiency with observation, forensic science, and logical reasoning that borders on the fantastic, which he employs when investigating cases for a wide variety of clients, including Scotland Yard.</p>
+  </div>
+</div>
+
+
 <div id="MyCarousel" onclick="closed()">
 <div class="fluid-container">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -163,10 +252,11 @@ padding:20px;
 </div>
 <button id="btn" onclick="show()"><span class="glyphicon glyphicon-triangle-top"></span></button>
 <div id="bottom">
-<div class="col-xs-3"><a href="#"><img src="<c:url value="/resources/items/moviee.jpg"></c:url>" alt="animation movie" class="inner-img img-responsive" onclick="closed()"></a></div>
-<div class="col-xs-3"><a href="#"><img src="<c:url value="/resources/items/moviee2.jpg"></c:url>" alt="animation movie" class="inner-img img-responsive" onclick="closed()"></a></div>
-<div class="col-xs-3"><a href="#"><img src="<c:url value="/resources/items/moviee3.jpg"></c:url>" alt="animation movie" class="inner-img img-responsive" onclick="closed()"></a></div>
-<div class="col-xs-3"><a href="#"><img src="<c:url value="/resources/items/moviee4.jpg"></c:url>" alt="animation movie" class="inner-img img-responsive" onclick="closed()"></a></div>
+<p style="padding=0px;margin-bottom:0px; margin-left:30px;font-size:15px;font-weight: bold;display: block;">Select an image:</p>
+<div class="col-xs-3"><a href="#" onclick="on()"><img src="<c:url value="/resources/items/moviee.jpg"></c:url>" alt="animation movie" class="inner-img img-responsive" onclick="closed()"></a></div>
+<div class="col-xs-3"><a href="#" onclick="on2()"><img src="<c:url value="/resources/items/moviee2.jpg"></c:url>" alt="animation movie" class="inner-img img-responsive" onclick="closed()"></a></div>
+<div class="col-xs-3"><a href="#" onclick="on3()"><img src="<c:url value="/resources/items/moviee3.jpg"></c:url>" alt="animation movie" class="inner-img img-responsive" onclick="closed()"></a></div>
+<div class="col-xs-3"><a href="#" onclick="on4()"><img src="<c:url value="/resources/items/moviee4.jpg"></c:url>" alt="animation movie" class="inner-img img-responsive" onclick="closed()"></a></div>
 </div>
 <script>
 function show(){
@@ -176,6 +266,38 @@ function show(){
 function closed(){
 	document.getElementById("btn").style.display = "block";
 	document.getElementById("bottom").style.display = "none";
+}
+
+function on() {
+    document.getElementById("overlay").style.display = "block";
+}
+
+function off() {
+    document.getElementById("overlay").style.display = "none";
+}
+
+function on2() {
+    document.getElementById("overlay2").style.display = "block";
+}
+
+function off2() {
+    document.getElementById("overlay2").style.display = "none";
+}
+
+function on3() {
+    document.getElementById("overlay3").style.display = "block";
+}
+
+function off3() {
+    document.getElementById("overlay3").style.display = "none";
+}
+
+function on4() {
+    document.getElementById("overlay4").style.display = "block";
+}
+
+function off4() {
+    document.getElementById("overlay4").style.display = "none";
 }
 </script>
 
