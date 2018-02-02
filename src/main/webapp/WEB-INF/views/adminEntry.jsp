@@ -47,10 +47,7 @@
 <div class="tab-pane fade in active" id="tab1">
 	<form method="post" action="saveSup" class="form-signin">
 	<span id="reauth-email" class="reauth-email"></span>
-	
-<!-- 	<h4 class="input-title">Supplier Id</h4> -->
-<!-- 	<input class="form-control" type="number" name="sid" required/> -->
-	
+		
 	<h4 class="input-title">Supplier Name</h4>
 	<input class="form-control" type="text" name="sname" required/>
 	
@@ -81,31 +78,31 @@
 	<form method="post" action="saveProd" class="form-signin" enctype="multipart/form-data">
 	<span id="reauth-email" class="reauth-email"></span>
 	
-	<h4 class="input-title">Product Name</h4>
+	<h4 class="input-title">Movie Name</h4>
 	<input class="form-control" type="text" name="pName" required/>
 	
-	<h4 class="input-title">Product rating</h4>
+	<h4 class="input-title">Movie rating</h4>
 	<input class="form-control" type="text" name="pRating" required/>
 	
-	<h4 class="input-title">Product description</h4>
+	<h4 class="input-title">Movie description</h4>
 	<input class="form-control" type="text" name="pDescription" required/>
 	
-	<h4 class="input-title">Product quality</h4>
+	<h4 class="input-title">Movie quality</h4>
 	<input class="form-control" type="text" name="pQuality" required/>
 	
-	<h4 class="input-title">Product released</h4>
+	<h4 class="input-title">Movie released</h4>
 	<input class="form-control" type="text" name="pReleased" required/>
 
-	<h4 class="input-title">Product Price</h4>
+	<h4 class="input-title">Movie Price</h4>
 	<input class="form-control" type="number" name="pPrice" required/>
 
-	<h4 class="input-title">Product Stock</h4>
+	<h4 class="input-title">Movie Stock</h4>
 	<input class="form-control" type="number" name="pStock" required/>
 	
-	<h4 class="input-title">Product Time</h4>
+	<h4 class="input-title">Movie Time</h4>
 	<input class="form-control" type="number" name="pTime" required/>
 	
-	<h4 class="input-title">Product File</h4>
+	<h4 class="input-title">Movie Poster</h4>
 	<input class="form-control" type="file" name="pFile" required/>
 	
 	<div class="form-group">
@@ -116,7 +113,7 @@
 		<select class="form-control" name="pSupplier" required>
 		<option value="">---Select Supplier---</option>
 		<c:forEach items="${supList}" var="sup">
-		<option value="${sup.sid}">${sup.supname}</option>
+		<option value="${sup.sid}">${sup.sid}</option>
 		</c:forEach>
 		</select>
 		</td>
@@ -132,7 +129,7 @@
 		<select class="form-control" name="pCategory" required>
 		<option value="">---Select Category---</option>
 		<c:forEach items="${catList}" var="cat">
-		<option value="${cat.cid}">${cat.catname}</option>
+		<option value="${cat.cid}">${cat.cid}</option>
 		</c:forEach>
 		</select>
 		</td>

@@ -8,19 +8,24 @@
   	text-decoration: none;
   	color: black;  
   	}
+  	
   	#myli{
   	list-style-type:none;
   	margin:0px;
   	padding: 0px; 
   	}
   	#searchbut{
-  		height:40px;
+  		height:30px;
+  		border-radius: 40%;
+  	}
+  	.fa{
+  		margin-bottom: 10px;
   	}
 	#myInput{
 		margin-bottom:-5px;
-		margin-top:5px;
+		margin-top:10px;
 	    width: 230px;
-	    height: 40px;
+	    height: 35px;
 	    box-sizing: border-box;
 	    border: 1px solid #gray;
 	    border-radius: 4px;
@@ -30,20 +35,6 @@
 	    background-repeat: no-repeat;
 	    padding: 1px 10px 1px 10px;
 	    }
-	    .dropdwn {
-		    position: relative;
-		    display: inline-block;
-		}
-	    #dropdown-content {
-	    	display: none;
-	        position: absolute;
-		    z-index: 1;
-		}
-		#myUL{
-			list-style-type:none;
-			background: #ff9999;
-			width:230px;
-		}
 /* 		other buttons	 */
 		.userDisabledButton,.logoutButton, .loginButton, .signInButtton{
 			border: 1px solid #cccccc;
@@ -57,12 +48,13 @@
 		}
 		.active1{
 			color:white;
+			font-size: 25px;
 		}
    </style>
 
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top" style="font-size: 16px;">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -91,26 +83,9 @@
         </li>
         </c:if>
         <li>
-        <form>
-        <div class="dropdwn">
-        <div class="drp-btn">
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."/>
-        <button id="searchbut" type="submit" disabled="disabled"><i class="fa fa-search"></i></button>
-		</div>
-		<div id="dropdown-content">
-		<ul id="myUL" >
-		  <li id="myli"><a href="productDetail?pid=4">American made</a></li>
-		  <li id="myli"><a href="productDetail?pid=2">Doctor Strange</a></li>
-		
-		  <li id="myli"><a href="productDetail?pid=5">Flatliners</a></li>
-		  <li id="myli"><a href="productDetail?pid=8">Into the deep</a></li>
-		
-		  <li id="myli"><a href="productDetail?pid=2">Deadpool</a></li>
-		  <li id="myli"><a href="#">Christina</a></li>
-		  <li id="myli"><a href="#">Cindy</a></li>
-		</ul>
-		</div>
-		</div>
+        <form action="prodSearch" method="post">
+        <input type="text" id="myInput" name="pname" placeholder="Search for movies.." required="required"/>
+        <button id="searchbut" class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
         </form>
         </li>
         <c:if test="<%=ses1 %>">
@@ -136,7 +111,7 @@
       <ul class="nav navbar-nav navbar-right">
       <c:if test="${pageContext.request.userPrincipal.name==null}">
         <li><a href="Register"><span class="loginButton"><span class="glyphicon glyphicon-user"></span> Sign Up</span></a></li>
-        <li><a href="goToLogin"><span class="signInButton"><span class="glyphicon glyphicon-log-in"></span>Log In</span></a></li>
+        <li><a href="goToLogin"><span class="signInButton"><span class="glyphicon glyphicon-log-in"></span> Log In</span></a></li>
       </c:if>
       
       <c:if test="${pageContext.request.userPrincipal.name!=null}">
@@ -155,34 +130,6 @@
 <br>
 <br>
 <br>
-
-<!-- function for search  -->
-   <script type="text/javascript">
-   function myFunction() {
-       var input, filter, ul, li, a, i;
-       input = document.getElementById("myInput");
-       filter = input.value.toUpperCase();
-       ul = document.getElementById("myUL");
-       li = ul.getElementsByTagName("li");
-	   cl= document.getElementById("dropdown-content");
-	   
-       for (i = 0; i < li.length; i++) {
-    	   a = li[i].getElementsByTagName("a")[0];
-           if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        	   cl.style.display="block";
-           } else {
-        	   li[i].style.display = "none";
-           }
-       }
-   }
-   function closelist(){
-	   document.getElementById("myUL").style.display = "none";
-	   document.getElementById("myInput").value="";
-   }
-   function showlist(){
-	   document.getElementById("myUL").style.display = "";
-   }
-   </script>
 
 </body>
 </html>

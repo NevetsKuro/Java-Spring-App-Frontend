@@ -27,7 +27,7 @@
     	display:block;
     	z-index:-1;
   	}
-  	body {
+  	body{
 	  min-height : 100%;
 	  min-width : 100%;
 	  background-size:100% 100%;
@@ -35,7 +35,6 @@
 	  overflow-y: hidden;
 	  overflow-x: hidden;
 	 }
-  	
   	.top{
   		position: absolute;
     	top: 10px;

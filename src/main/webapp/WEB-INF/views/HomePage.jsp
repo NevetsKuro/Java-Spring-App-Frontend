@@ -4,10 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> i'm a cool </title>
+<title> HomePage </title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
 <style type="text/css">
 .mi-title{
 padding:2px;
@@ -52,7 +53,7 @@ color: white;
 	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
 	border-bottom:1px solid;
 	border-bottom-color:grey;
-	font-size: 15pt;
+	font-size: 12pt;
 	padding: 3px;
 	border-radius: 3px; 
 }
@@ -62,7 +63,7 @@ color: white;
 }
 .container .col-sm-2{
 	position:sticky;
-	top:0px;
+	top:20px;
 	right:0px;
 	padding-top:10px;
 	border:2px solid #d9d9d9;
@@ -110,7 +111,26 @@ background-color:grey;
 width:50px;
 height:50px;
 }
+
 </style>
+<script type="text/javascript">
+    $(document).ready(function() {
+            $("#footer").css("display", "none");
+            $("#footer").fadeIn(1000);
+            $("#body-div").css("display", "none");
+            $("#body-div").fadeIn(1000);
+    		
+		    $("a.homepageanchor").click(function(event){
+		        event.preventDefault();
+		        linkLocation = this.href;
+		        $("#body-div").fadeOut(1000, redirectPage);      
+		    });
+		         
+		    function redirectPage() {
+		        window.location = linkLocation;
+		    }
+    });
+</script>
 </head>
 
 <body class="bdy">
@@ -119,14 +139,14 @@ height:50px;
 
 <div id="body-div" class="container" onclick="closelist()">
 <div id="headings"><h2><span class="spanhead" onclick="closelist()">Shop Movies Now!</span></h2></div>
-<div style="display:block">
+<div id="videoframe" style="display:block">
 <iframe style="width:100%; -webkit-transform:scaleX(1); border: 0px;" width="640" height="360" src="https://www.youtube.com/embed/iBFrKgaMYv4?autoplay=0&showinfo=0&controls=0&rel=0" title="compilations">
 </iframe>
 </div>
 
 <!-- sidenav -->
 <div class="col-sm-2">
-<h2>List</h2>
+<h2>Sort By</h2>
 <h4 id="h4" >Genre</h4>
 <ul title="Category" >
 <c:forEach var="cat" items="${catList}">
@@ -312,7 +332,7 @@ height:50px;
 </div>
 </div>
 
-<div class="container">
+<div class="container" id="footer">
 	<jsp:include page="footer.jsp"></jsp:include>
 </div>
 

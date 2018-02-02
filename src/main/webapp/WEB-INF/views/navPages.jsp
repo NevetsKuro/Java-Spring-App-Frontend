@@ -31,7 +31,7 @@ font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif";
 .main.div{
 width:100%;
 height:auto;
-display: block;
+display: block;	
 }
 .col-sm-3{
 height:100%;
@@ -56,7 +56,7 @@ color: black;
 	border-bottom:1px solid;
 	border-bottom-color:black;
 	list-style-type:none;
-	font-size: 15pt;
+	font-size: 12pt;
 	padding:3px;
 	border-radius: 3px;
 }
@@ -66,13 +66,18 @@ color: black;
 #navPagesbdy{
 	background-color: #cccccc;
 }
+.col-sm-2{
+	border-radius: 10px;
+	background-color: #b3b3b3; 
+}
 </style>
 </head>
 <body id="navPagesbdy">
 <jsp:include page="header.jsp"></jsp:include>
-<div class="main.div">
+<div class="container main.div">
+
 <!-- Left navigation -->
-<div class="col-sm-3">
+<div class="col-sm-2">
 
 <h2>List</h2>
 <h4 id="h4" >Category</h4>
@@ -89,9 +94,15 @@ color: black;
 </ul>
 
 </div>
+
 <!-- Right navigation -->
 <div class="rightdiv">
-<c:forEach var="prod" items="${prodList}">
+<c:forEach varStatus="pro" items="${prodList}">
+<c:set var="times" value="${pro.count}"></c:set>
+</c:forEach>
+<h3 style="padding-left: 200px;">There are <c:out value="${times}" default="0"></c:out> Search result</h3>
+
+<c:forEach var="prod" varStatus="pro" items="${prodList}">
 <div class="thumbnail" id="navdiv"><a href="productDetail?pid=${prod.id}">
 <img class="img img-rounded img-responsive" 
 	style="width:150px;height:250px;display:relative;" alt="1" 
@@ -101,6 +112,9 @@ color: black;
 </a></div>
 </c:forEach>
 </div>
+</div>
+<div>
+<jsp:include page="footer.jsp"></jsp:include>
 </div>
 </body>
 </html>

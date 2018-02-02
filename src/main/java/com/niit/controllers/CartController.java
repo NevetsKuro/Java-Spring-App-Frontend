@@ -142,6 +142,7 @@ public class CartController {
 		Double total = Double.parseDouble(req.getParameter("total"));
 		
 		String payment = req.getParameter("payment");
+		String paymentType = req.getParameter("payment-type");
 		//changes
 		//		List<Cart> cart = cartDaoImpl.findByCartID(username);
 		//		System.out.println(cart.get(5));
@@ -150,7 +151,9 @@ public class CartController {
 		order.setUser(u);
 		order.setTotal(total);
 		order.setPayment(payment);
+		order.setPaymentType(paymentType);
 		ordersDaoImpl.insertOrders(order);
+		cartDaoImpl.deleteCartByName(username);
 		mv.addObject("orderDetails",u);
 		mv.setViewName("ack");
 		return mv;

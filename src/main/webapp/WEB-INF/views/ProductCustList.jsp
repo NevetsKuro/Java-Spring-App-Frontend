@@ -18,6 +18,7 @@ background-color: #f2f2f2;
 #api{
 border-top:1px solid #cccccc;
 text-align: center;
+background-color:#f2f2f2;
 border-radius: 5px;
 }
 #mainbody{
@@ -32,7 +33,7 @@ background-size: cover;
 <div class="container table-responsive">
 <h2>Product List</h2>
 
-<table class="table table-hover table-striped" id="api">
+<table class="table table-hover" id="api">
 <thead>
 <tr>
 <th class="info">Index</th>

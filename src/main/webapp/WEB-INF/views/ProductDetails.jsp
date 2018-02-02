@@ -31,6 +31,9 @@ width: 100%;
 .img-thumbnail{
 color: black;
 }
+video{
+cursor: pointer;
+}
 </style>
 </head>
 <body class="body">
@@ -45,13 +48,15 @@ color: black;
 
 <!-- Bottom Side Grid -->
 <div class="row">
+
 <!-- Left Side Grid -->
 <div class="col-sm-3"><img class="img img-rounded img-responsive" alt="${prod.imgname}" src="<c:url value="/resources/items/${prod.imgname}"></c:url>"></div>
 <div class="col-sm-1"></div>
+
 <!-- Right Side Grid -->
 <div class="col-sm-8">
-<h2 id="rs-h2"><c:out value="${prod.name}"></c:out></h2>
-<p id="rs-pdes"><c:out value="${prod.description}"></c:out></p>
+<h2 id="rs-h2"><c:out value="${prod.name}"></c:out> &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-family:'Courier New';font-size: 18px;">${prod.rating}/10 rating</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="btn btn-success" style="text-align: center;">${prod.quality}</span></h2>
+<p id="rs-pdes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<c:out value="${prod.description}"></c:out></p>
 <p id="rs-p"><span style="font-size:16px;color: maroon;">By</span> <span style="font-size:16px;color: maroon;"><c:out value="${prod.supplier.supname}"></c:out></span></p>
 <p id="rs-p"><span>&#8377;</span><span><c:out value="${prod.price}"></c:out></span></p>
 <span><a class="btn btn-success" href="productBuy?pid=${prod.id}">BUY</a></span>
@@ -60,6 +65,10 @@ color: black;
 <div></div>
 <div></div>
 
+</div>
+<br>
+<div>
+<jsp:include page="footer.jsp"></jsp:include>
 </div>
 
 </body>

@@ -3,7 +3,6 @@ package com.niit.controllers;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -104,10 +103,10 @@ public class adminController {
 		prod.setRating(req.getParameter("pRating"));
 		prod.setReleased(req.getParameter("pReleased"));
 		prod.setStock(Integer.parseInt(req.getParameter("pStock")));
-		SimpleDateFormat sf = new SimpleDateFormat("dd/mm/yy");
+		//SimpleDateFormat sf = new SimpleDateFormat("dd/mm/yy");
 		//prod.setProddate(sf.parse(req.getParameter("pDate")));
-		prod.setCategory(categoryDaoImpl.findByCatId(Integer.parseInt(req.getParameter("pSupplier"))));
-		prod.setSupplier(supplierDaoImpl.findBySupId(Integer.parseInt(req.getParameter("pCategory"))));
+		prod.setCategory(categoryDaoImpl.findByCatId(Integer.parseInt(req.getParameter("pCategory"))));
+		prod.setSupplier(supplierDaoImpl.findBySupId(Integer.parseInt(req.getParameter("pSupplier"))));
 		prod.setTime(Integer.parseInt(req.getParameter("pTime")));
 		prod.setProddate(new Date());
 
@@ -179,8 +178,8 @@ public class adminController {
 			System.out.println("couldnt add date");
 		}
 		prod.setProddate(sf);
-		prod.setCategory(categoryDaoImpl.findByCatId(Integer.parseInt(req.getParameter("pSupplier"))));
-		prod.setSupplier(supplierDaoImpl.findBySupId(Integer.parseInt(req.getParameter("pCategory"))));
+		prod.setCategory(categoryDaoImpl.findByCatId(Integer.parseInt(req.getParameter("pCategory"))));
+		prod.setSupplier(supplierDaoImpl.findBySupId(Integer.parseInt(req.getParameter("pSupplier"))));
 		prod.setTime(Integer.parseInt(req.getParameter("pTime")));
 		prod.setImgname(req.getParameter("imgName"));
 

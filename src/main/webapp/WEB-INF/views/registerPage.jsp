@@ -71,7 +71,7 @@ input.ng-valid {
 </div>
 <div class="form-group">
 	<label for="cpassword">Confirm-Password:</label>
-	<form:input id="cpassword" path="password" type="password" class="form-control" ng-model="myPwd2" required="true" pattern=".{6,}" onmouseover="chkPwd()"  placeholder="Confirm Password"/>
+	<form:input id="cpassword" path="" type="password" class="form-control" ng-model="myPwd2" required="true" pattern=".{6,}" onmouseover="chkPwd()"  placeholder="Confirm Password"/>
 </div>
 <div class="form-group" >
 	<label for="gender">Gender</label>

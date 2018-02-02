@@ -1,7 +1,5 @@
 package com.niit.controllers;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -128,7 +126,6 @@ public class IndexController {
 		if (result.hasErrors()) {
 			mv.setViewName("registerPage");
 		} else {
-			user.setEnabled(true);
 			user.setRole("ROLE_USER");
 			userDaoImpl.insertUser(user);
 			mv.setViewName("login");
@@ -193,8 +190,18 @@ public class IndexController {
 		return mv;
 	}
 	
+	@RequestMapping("/prodSearch")
+	public ModelAndView productSearched(@RequestParam("pname") String pname)
+	{
+		ModelAndView mv = new  ModelAndView();
+		mv.addObject("prodList",productDaoImpl.findByProdNameFrSearch(pname.toLowerCase()));
+		mv.setViewName("navPages");
+		return mv;
+	}
+	
 	@ModelAttribute
 	public void getData(Model m) {
 		m.addAttribute("catList", categoryDaoImpl.retrieve());
 	}
+	
 }
