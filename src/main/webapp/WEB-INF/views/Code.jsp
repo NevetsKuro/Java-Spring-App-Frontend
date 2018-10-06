@@ -1,3 +1,5 @@
+<%-- 
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -14,6 +16,13 @@
 *{
 	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
+#cb{
+	width:20px;
+}
+label{
+	color: black;
+}
+
 html, body {
   border: 0;
   padding: 0;
@@ -28,25 +37,21 @@ body {
   align-items: center;
   font-size: 16px;
 }
-
 form {
   background: white;
   width: 40%;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
   font-family: lato;
-  position: relative;
   color: #333;
   border-radius: 10px;
 }
-form header {
-  background: #FF3838;
-  padding: 30px 20px;
-  color: white;
-  font-size: 1.2em;
-  font-weight: 600;
-  border-radius: 10px 10px 0 0;
+form input{
+	margin-left: 30px;
+	padding: 3px;
+	border-radius: 5px;
 }
 form label {
+  font-size:20px;
   margin-left: 20px;
   display: inline-block;
   margin-top: 30px;
@@ -60,26 +65,11 @@ form label span {
   left: 2.3em;
   top: -10px;
 }
-form input {
-  display: block;
-  width: 78%;
-  margin-left: 20px;
-  padding: 5px 20px;
-  font-size: 1em;
-  border-radius: 3px;
-  outline: none;
-  border: 1px solid #ccc;
-}
-form .help {
-  margin-left: 20px;
-  font-size: 0.8em;
-  color: #777;
-}
 form button {
   position: relative;
   margin-top: 30px;
   margin-bottom: 30px;
-  left: 50%;
+  left: 30%;
   transform: translate(-50%, 0);
   font-family: inherit;
   color: white;
@@ -97,39 +87,45 @@ form button {
 form button:hover {
   background: #ff5252;
 }
-.checkbox{
-    display: inline;
-}
 
 </style>
 </head>
-<body id="particles-js">
+<body>
 
-    
+<!-- class="form-signin" -->
 <form method="POST" action="${pageContext.request.contextPath}/login" >
-    <header>Login</header>
-    <label>Username <span>*</span></label>
-    <input name="name"/>
-    <div class="help">At least 6 character</div>
-    <label>Password <span>*</span></label>
-    <input id="password" name="password" type="password"/>
-    <div class="help">Use upper and lowercase lettes as well</div>
-    <div class="checkbox">
-      <label><input id="cb" type="checkbox" class="bg-primary" onclick="myVisibility()"/> Show Password</label>
-    </div>
-    <button>Login</button>
-</form>
+<!--  class="login-box" -->
+<label for="name">Name:</label><br>
+<input name="name" type="text" autofocus placeholder="your name.." required/><br>
 
+<!--  class="login-box" -->
+<label>Password:</label><br>
+<input id="password" name="password" type="password" placeholder="password..." required/><br>
+	
+<div class="checkbox">
+<label><input id="cb" type="checkbox" class="bg-primary" onclick="myVisibility()"/> Show Password</label>
+</div>
+	<button name="login" type="submit">Login</button>
+	<span>&nbsp;</span>
+    <button name="reset" type="reset">Cancel</button>
+	
+</form>
 <script type="text/javascript">
-    function myVisibility() {
-        var x = document.getElementById("password");
-        if (x.type === "password") {
-            x.type = "text";
-        } else {
-            x.type = "password";
-        }
+function myVisibility() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
     }
+}
 </script>
-<script src="http://www.jsdelivr.com/#!particles.js"></script>
 </body>
 </html>
+
+
+
+
+
+--%>
+

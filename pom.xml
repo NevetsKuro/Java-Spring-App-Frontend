@@ -1,20 +1,28 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  
   <groupId>com.gl</groupId>
   <artifactId>projee</artifactId>
   <packaging>war</packaging>
   <version>1.0</version>
+  
   <name>projee Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+  
  <dependencies>
   
-	  <dependency>
+        <dependency>
 	  <groupId>webby</groupId>
 	  <artifactId>projeeBackend</artifactId>
 	  <version>0.0.1-SNAPSHOT</version>
-	  </dependency>
+        </dependency>
   
   	<dependency>
 	    <groupId>commons-logging</groupId>
@@ -173,18 +181,20 @@
 	</dependency>
 			
 </dependencies>
-  
-  <build>
-      <plugins>
-        <plugin>
-        	<groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <configuration>
-                <source>1.8</source>
-                <target>1.8</target>
-            </configuration>
-        </plugin>
-    </plugins>
-    <finalName>projee</finalName>
-  </build>
+    <build>
+        <plugins>
+            <!-- Eclipse project -->
+			
+		  <!-- Set JDK Compiler Level -->
+		  <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<configuration>
+				<source>1.8</source>
+				<target>1.8</target>
+			</configuration>
+		  </plugin>
+
+		</plugins>
+            </build>
 </project>

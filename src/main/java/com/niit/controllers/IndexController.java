@@ -37,7 +37,7 @@ public class IndexController {
 
 	@RequestMapping("/")
 	public String index() {
-		return "index";
+		return "login";
 	}
 
 	@RequestMapping("/head")

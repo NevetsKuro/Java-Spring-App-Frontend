@@ -20,6 +20,7 @@ import com.Dao.SupplierDao;
 import com.Dao.UserDao;
 import com.model.Cart;
 import com.model.Orders;
+import com.model.Product;
 import com.model.User;
 
 @Controller
@@ -127,6 +128,11 @@ public class CartController {
 		String username = principal.getName();
 		User u = userDaoImpl.findUserByName(username);
 		List<Cart> cart = cartDaoImpl.findByCartID(username);
+                for (Cart cart1 : cart) {
+                    Product prod = productDaoImpl.findByProdId(cart1.getCartProductId());
+                    prod.setStock(prod.getStock() - cart1.getCartStock());
+                    productDaoImpl.update(prod);
+                }
 		mv.addObject("user",u);
 		mv.addObject("cart", cart);
 		mv.setViewName("checkout");

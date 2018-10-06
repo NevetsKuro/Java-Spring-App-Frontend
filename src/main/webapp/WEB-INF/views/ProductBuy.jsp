@@ -27,7 +27,7 @@ border-bottom: 1px solid grey;
 <tr><td>Description:</td><td>${prod.description}</td></tr>
 <tr><td>Amount:</td><td>${prod.price}</td></tr>
 <tr><td>Provider:</td><td>${prod.supplier.supname}</td></tr>
-<tr><td>Quantity:</td><td><input type="number" class="" name="pQty" form="f1" max="${prod.stock}" required><td></tr>
+<tr><td>Quantity:</td><td><input type="number" class="" name="pQty" form="f1" max="${prod.stock}" required/><td></tr>
 </table>
 <div>
 <form id="f1" action="addToCart" method="post" style="height: 50px">

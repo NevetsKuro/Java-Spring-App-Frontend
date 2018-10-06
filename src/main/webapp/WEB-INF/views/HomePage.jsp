@@ -137,10 +137,10 @@ height:50px;
 <button onclick="topFunction()" id="myTopToBtn" title="Go to top"><i class="glyphicon glyphicon-chevron-up" ></i></button>
 <jsp:include page="header.jsp"></jsp:include>
 
-<div id="body-div" class="container" onclick="closelist()">
+<div id="body-div" class="container" style="margin-top:55px;" onclick="closelist()">
 <div id="headings"><h2><span class="spanhead" onclick="closelist()">Shop Movies Now!</span></h2></div>
 <div id="videoframe" style="display:block">
-<iframe style="width:100%; -webkit-transform:scaleX(1); border: 0px;" width="640" height="360" src="https://www.youtube.com/embed/iBFrKgaMYv4?autoplay=0&showinfo=0&controls=0&rel=0" title="compilations">
+<iframe style="width:100%; -webkit-transform:scaleX(1); border: 0px;" width="640" height="0" src="" title="compilations">
 </iframe>
 </div>
 

@@ -251,7 +251,7 @@ font-weight: bolder;
 </div>
 <button id="btn" onclick="show()"><span class="glyphicon glyphicon-triangle-top"></span></button>
 <div id="bottom">
-<p style="padding=0px;margin-bottom:0px; margin-left:30px;font-size:15px;font-weight: bold;display: block;">Select an image:</p>
+<p style="padding:0px;margin-bottom:0px; margin-left:30px;font-size:15px;font-weight: bold;display: block;">Select an image:</p>
 <div class="col-xs-3"><a href="#" onclick="on()"><img src="<c:url value="/resources/items/moviee.jpg"></c:url>" alt="animation movie" class="inner-img img-responsive" onclick="closed()"></a></div>
 <div class="col-xs-3"><a href="#" onclick="on2()"><img src="<c:url value="/resources/items/moviee2.jpg"></c:url>" alt="animation movie" class="inner-img img-responsive" onclick="closed()"></a></div>
 <div class="col-xs-3"><a href="#" onclick="on3()"><img src="<c:url value="/resources/items/moviee3.jpg"></c:url>" alt="animation movie" class="inner-img img-responsive" onclick="closed()"></a></div>
