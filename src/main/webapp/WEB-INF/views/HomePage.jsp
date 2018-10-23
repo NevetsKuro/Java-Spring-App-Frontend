@@ -106,10 +106,15 @@ background-color:grey;
   padding: 8px;
   border-radius: 30px;
   transition-duration:width 2s, height 2s;
+  opacity: 0.4;
 } 
 #myTopToBtn:hover{
 width:50px;
 height:50px;
+opacity: 0.8;
+}
+#headings{
+    text-align: center;
 }
 
 </style>
@@ -166,7 +171,7 @@ height:50px;
 </div>
 
 <div class="col-sm-10">
-<div class="row">
+<!--<div class="row">-->
 <div class="col-sm-3">
 <a class="homepageanchor" href="productDetail?pid=35">
 <img class=" mi-img img-rounded img-responsive" alt="1" src="<c:url value="/resources/items/movie1.1.jpg"/>"><span class="mi-title">American made</span>
@@ -184,8 +189,8 @@ height:50px;
 &nbsp;
 </div>
 
-</div>
-<div class="row">
+<!--</div>-->
+<!--<div class="row">-->
 <div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=39">
 <img class="mi-img img-rounded img-responsive" alt="#"  src="<c:url value="/resources/items/movie1.5.jpg"/>"><span class="mi-title">Deadpool</span>
 </a></div>
@@ -202,7 +207,7 @@ height:50px;
 &nbsp;
 </div>
 
-</div>
+<!--</div>-->
 <div class="row">
 <div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=43">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;"src="<c:url value="/resources/items/movie1.9.jpg"/>"><span class="mi-title">Reign of Fire</span>

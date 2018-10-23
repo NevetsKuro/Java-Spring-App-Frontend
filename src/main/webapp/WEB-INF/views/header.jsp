@@ -68,7 +68,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <%
-        	Boolean ses1 = request.isUserInRole("ROLE_ADMIN");
+        	Boolean ses1 = request.isUserInRole("Role_ADMIN");
         %>
         <li><a href="HomePage"><span class="glyphicon glyphicon-home"></span></a></li>
         <c:if test="<%=ses1 %>">
