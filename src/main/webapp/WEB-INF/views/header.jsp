@@ -1,3 +1,4 @@
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -69,9 +70,10 @@
       <ul class="nav navbar-nav">
         <%
         	Boolean ses1 = request.isUserInRole("Role_ADMIN");
+                boolean b1 = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString().contains("ADMIN");
         %>
         <li><a href="HomePage"><span class="glyphicon glyphicon-home"></span></a></li>
-        <c:if test="<%=ses1 %>">
+        <c:if test="<%=b1 %>">
         <li><a href="goAEntry">Admin</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin List<span class="caret"></span></a>
@@ -88,7 +90,7 @@
         <button id="searchbut" class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
         </form>
         </li>
-        <c:if test="<%=ses1 %>">
+        <c:if test="<%=b1 %>">
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Category<span class="caret"></span></a>
         <ul class="dropdown-menu">
         <c:forEach var="catVal" items="${catList}">

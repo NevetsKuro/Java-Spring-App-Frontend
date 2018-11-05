@@ -19,189 +19,189 @@ import com.Dao.SupplierDao;
 import com.Dao.UserDao;
 import com.model.Product;
 import com.model.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 @Controller
 public class IndexController {
 
-	@Autowired
-	SupplierDao supplierDaoImpl;
+    @Autowired
+    SupplierDao supplierDaoImpl;
 
-	@Autowired
-	CategoryDao categoryDaoImpl;
+    @Autowired
+    CategoryDao categoryDaoImpl;
 
-	@Autowired
-	ProductDao productDaoImpl;
+    @Autowired
+    ProductDao productDaoImpl;
 
-	@Autowired
-	UserDao userDaoImpl;
+    @Autowired
+    UserDao userDaoImpl;
 
-	@RequestMapping("/")
-	public String index() {
-		return "login";
-	}
+    @RequestMapping("/")
+    public String index() {
+        return "login";
+    }
 
-	@RequestMapping("/head")
-	public String head() {
-		return "header";
-	}
-	
-	@RequestMapping("/Home")
-	public String homepage() {
-		return "welcomePage";
-	}
-	
-	@RequestMapping("/HomePage")
-	public String Mainpage() {
-		return "HomePage";
-	}
+    @RequestMapping("/head")
+    public String head() {
+        return "header";
+    }
 
-	@RequestMapping("/goToLogin")
-	public String gotoLogin() {
-		return "login";
-	}
-	
-	@RequestMapping("/logout")
-	public String userLogged(){
-		return "welcomePage";
-	}
+    @RequestMapping("/Home")
+    public String homepage() {
+        return "welcomePage";
+    }
 
-	@RequestMapping("/dcmaRequest")
-	public String dcmarequest(){
-		return "dcmaRequest";
-	}
+    @RequestMapping("/HomePage")
+    public String Mainpage() {
+        return "HomePage";
+    }
 
-	@RequestMapping("/linkRemoval")
-	public String linkremoval(){
-		return "linkRemoval";
-	}
-	
-	@RequestMapping("/terms")
-	public String termsofuse(){
-		return "Terms";
-	}
-	
-	@RequestMapping("/privacy")
-	public String privacy(){
-		return "Privacy";
-	}
-	
-	@RequestMapping(value="/userLogged")
-	public String userlog(HttpSession hs, User user, HttpServletRequest req){
-		
-		System.out.println("userlogged");
-		if(req.isUserInRole("Role_ADMIN")){
-			hs = req.getSession();
-			hs.setAttribute("sess",req.getUserPrincipal().getName());
-		}
-		
-		hs.setAttribute("catList", categoryDaoImpl.retrieve());
-		hs.setAttribute("supList", supplierDaoImpl.retrieve());
-		hs.setAttribute("prodList", productDaoImpl.retrieve());
-		return "redirect:/HomePage";
-	}
-	
-	@RequestMapping("/Error")
-	public String userError(){
-		return "Error";
-	}
-	
-	@RequestMapping("/reLogin")
-	public String userLogin(){
-		return "redirect:/goToLogin";
-	}	
-	
-	@RequestMapping(value = "/Register", method = RequestMethod.GET)
-	public ModelAndView gotoRegisterPage() {
-		ModelAndView mv = new ModelAndView();
-		// connects the back-end User class and front-end registration page
-		mv.addObject("user", new User());
-		mv.setViewName("registerPage");
-		return mv;
-	}
+    @RequestMapping("/goToLogin")
+    public String gotoLogin() {
+        return "login";
+    }
 
-	@RequestMapping(value = "/saveRegister", method = RequestMethod.POST)
-	public ModelAndView saveRegister(@ModelAttribute("user") User user, BindingResult result) {
-		System.out.println("enterd the method");
-		ModelAndView mv = new ModelAndView();
-		if (result.hasErrors()) {
-			mv.setViewName("registerPage");
-		} else {
-			user.setRole("ROLE_USER");
-			userDaoImpl.insertUser(user);
-			mv.setViewName("login");
-		}
-		return mv;
-	}
+    @RequestMapping("/logout")
+    public String userLogged() {
+        return "welcomePage";
+    }
 
+    @RequestMapping("/dcmaRequest")
+    public String dcmarequest() {
+        return "dcmaRequest";
+    }
 
-	@RequestMapping("/productCustList")
-	public ModelAndView getCustTable(@RequestParam("cid") int cid) {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("prodList", productDaoImpl.getProdByCatId(cid));
-		//changed from productCustList
-		mv.setViewName("ProductCustList");
-		return mv;
-	}
-	
-	@RequestMapping("/productDetail")
-	public ModelAndView displayProductsDetails(@RequestParam("pid")int pid){
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("prod", productDaoImpl.findByProdId(pid)).isEmpty();
-		Product lp = productDaoImpl.findByProdId(pid); 
-		System.out.println("Boolean is:"+lp);
-		if(lp!=null){
-			mv.setViewName("ProductDetails");
-		}else{
-			mv.setViewName("redirect:/HomePage");
-		}
-		return mv;
-	}
-	
-	@RequestMapping("/prodCatList")
-	public ModelAndView getCatTable(@RequestParam("cid") int cid) {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("prodList", productDaoImpl.getProdByCatId(cid));
-		mv.setViewName("ProductCustList");
-		return mv;
-	}
+    @RequestMapping("/linkRemoval")
+    public String linkremoval() {
+        return "linkRemoval";
+    }
 
+    @RequestMapping("/terms")
+    public String termsofuse() {
+        return "Terms";
+    }
 
-	@RequestMapping("/prodSupList")
-	public ModelAndView getSupTable(@RequestParam("sid") int sid) {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("prodList", productDaoImpl.getProdBySupId(sid));
-		mv.setViewName("ProductCustList");
-		return mv;
-	}
+    @RequestMapping("/privacy")
+    public String privacy() {
+        return "Privacy";
+    }
 
-	@RequestMapping("/prodCatListNav")
-	public ModelAndView getCatTableNav(@RequestParam("cid") int cid) {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("prodList", productDaoImpl.getProdByCatId(cid));
-		mv.setViewName("navPages");
-		return mv;
-	}
+    @RequestMapping(value = "/userLogged")
+    public String userlog(HttpSession hs, User user, HttpServletRequest req) {
 
-	@RequestMapping("/prodSupListNav")
-	public ModelAndView getSupTableNav(@RequestParam("sid") int sid) {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("prodList", productDaoImpl.getProdBySupId(sid));
-		mv.setViewName("navPages");
-		return mv;
-	}
-	
-	@RequestMapping("/prodSearch")
-	public ModelAndView productSearched(@RequestParam("pname") String pname)
-	{
-		ModelAndView mv = new  ModelAndView();
-		mv.addObject("prodList",productDaoImpl.findByProdNameFrSearch(pname.toLowerCase()));
-		mv.setViewName("navPages");
-		return mv;
-	}
-	
-	@ModelAttribute
-	public void getData(Model m) {
-		m.addAttribute("catList", categoryDaoImpl.retrieve());
-	}
-	
+        
+        boolean b = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString().contains("ADMIN");
+        System.out.println("userlogged");
+        if (b) {
+            hs = req.getSession();
+            hs.setAttribute("sess", req.getUserPrincipal().getName());
+        }
+
+        hs.setAttribute("catList", categoryDaoImpl.retrieve());
+        hs.setAttribute("supList", supplierDaoImpl.retrieve());
+        hs.setAttribute("prodList", productDaoImpl.retrieve());
+        return "redirect:/HomePage";
+    }
+
+    @RequestMapping("/Error")
+    public String userError() {
+        return "Error";
+    }
+
+    @RequestMapping("/reLogin")
+    public String userLogin() {
+        return "redirect:/goToLogin";
+    }
+
+    @RequestMapping(value = "/Register", method = RequestMethod.GET)
+    public ModelAndView gotoRegisterPage() {
+        ModelAndView mv = new ModelAndView();
+        // connects the back-end User class and front-end registration page
+        mv.addObject("user", new User());
+        mv.setViewName("registerPage");
+        return mv;
+    }
+
+    @RequestMapping(value = "/saveRegister", method = RequestMethod.POST)
+    public ModelAndView saveRegister(@ModelAttribute("user") User user, BindingResult result) {
+        System.out.println("enterd the method");
+        ModelAndView mv = new ModelAndView();
+        if (result.hasErrors()) {
+            mv.setViewName("registerPage");
+        } else {
+            user.setRole("ROLE_USER");
+            userDaoImpl.insertUser(user);
+            mv.setViewName("login");
+        }
+        return mv;
+    }
+
+    @RequestMapping("/productCustList")
+    public ModelAndView getCustTable(@RequestParam("cid") int cid) {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("prodList", productDaoImpl.getProdByCatId(cid));
+        //changed from productCustList
+        mv.setViewName("ProductCustList");
+        return mv;
+    }
+
+    @RequestMapping("/productDetail")
+    public ModelAndView displayProductsDetails(@RequestParam("pid") int pid) {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("prod", productDaoImpl.findByProdId(pid)).isEmpty();
+        Product lp = productDaoImpl.findByProdId(pid);
+        System.out.println("Boolean is:" + lp);
+        if (lp != null) {
+            mv.setViewName("ProductDetails");
+        } else {
+            mv.setViewName("redirect:/HomePage");
+        }
+        return mv;
+    }
+
+    @RequestMapping("/prodCatList")
+    public ModelAndView getCatTable(@RequestParam("cid") int cid) {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("prodList", productDaoImpl.getProdByCatId(cid));
+        mv.setViewName("ProductCustList");
+        return mv;
+    }
+
+    @RequestMapping("/prodSupList")
+    public ModelAndView getSupTable(@RequestParam("sid") int sid) {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("prodList", productDaoImpl.getProdBySupId(sid));
+        mv.setViewName("ProductCustList");
+        return mv;
+    }
+
+    @RequestMapping("/prodCatListNav")
+    public ModelAndView getCatTableNav(@RequestParam("cid") int cid) {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("prodList", productDaoImpl.getProdByCatId(cid));
+        mv.setViewName("navPages");
+        return mv;
+    }
+
+    @RequestMapping("/prodSupListNav")
+    public ModelAndView getSupTableNav(@RequestParam("sid") int sid) {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("prodList", productDaoImpl.getProdBySupId(sid));
+        mv.setViewName("navPages");
+        return mv;
+    }
+
+    @RequestMapping("/prodSearch")
+    public ModelAndView productSearched(@RequestParam("pname") String pname) {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("prodList", productDaoImpl.findByProdNameFrSearch(pname.toLowerCase()));
+        mv.setViewName("navPages");
+        return mv;
+    }
+
+    @ModelAttribute
+    public void getData(Model m) {
+        m.addAttribute("catList", categoryDaoImpl.retrieve());
+    }
+
 }
