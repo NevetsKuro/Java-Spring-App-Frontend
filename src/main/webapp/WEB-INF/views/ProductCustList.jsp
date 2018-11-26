@@ -1,77 +1,91 @@
+<%@page import="java.util.Map"%>
+<%@page import="org.springframework.web.servlet.ModelAndView"%>
+<%@page import="java.util.List"%>
+<%@page import="com.model.Product"%>
+<%@page import="org.springframework.ui.Model"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+         pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Display Product List</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style type="text/css">
-th{
-text-align: center;
-border-left:1px solid #cccccc;
-background-color: #f2f2f2;
-}
-#api{
-border-top:1px solid #cccccc;
-text-align: center;
-background-color:#f2f2f2;
-border-radius: 5px;
-}
-#mainbody{
-background-repeat: no-repeat;
-background-position: center;
-background-size: cover;
-}
-</style>
-</head>
-<body id="mainbody" background="<c:url value="/resources/items/wallpprs4.jpg"></c:url>">
-<jsp:include page="header.jsp"></jsp:include>
-<div class="container table-responsive">
-<h2>Product List</h2>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <title>Display Product List</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style type="text/css">
+            th{
+                text-align: center;
+                border-left:1px solid #cccccc;
+                background-color: #f2f2f2;
+            }
+            #api{
+                border-top:1px solid #cccccc;
+                text-align: center;
+                background-color:#f2f2f2;
+                border-radius: 5px;
+            }
+            #mainbody{
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                height: -webkit-fill-available;
+            }
+        </style>
+    </head>
+    <body id="mainbody" background="<c:url value="/resources/items/wallpprs4.jpg"></c:url>">
+        <jsp:include page="header.jsp"></jsp:include>
+            <div class="container table-responsive">
+                <h2>Product List</h2>
 
-<table class="table table-hover" id="api">
-<thead>
-<tr>
-<th class="info">Index</th>
-<th>Product Id</th>
-<th>Product Name</th>
-<th>Product Description</th>
-<th>Product Released</th>
-<th>Price</th>
-<th>Time</th>
-<th>Posted on</th>
-<th>Poster</th>
-</tr>
-</thead>
-<tbody>
-<c:if test="${empty prodList}">
-<tr align="center">
-<td colspan="10">The product list is empty!!</td>
-</tr>
-</c:if>
-<c:forEach var="p" varStatus="st" items="${prodList}">
-<tr>
-<td><c:out value="${st.count}"></c:out></td>
-<td><c:out value="${p.id}"></c:out></td>
-<td><c:out value="${p.name}"></c:out></td>
-<td ><c:out value="${p.description}"></c:out></td>
-<td><c:out value="${p.released }"></c:out></td>
-<td><c:out value="${p.price }"></c:out></td>
-<td><c:out value="${p.time }"></c:out></td>
-<td><c:out value="${p.proddate }"></c:out></td>
-<c:set var="contextRoot" value="${pageContext.request.contextPath}"></c:set>
-<td><img src="<c:url value="/resources/items/${p.imgname}"/>" height="50px" width="50px" ></td>
-</tr>
-</c:forEach>
-</tbody>
-</table>
+                <table class="table table-hover" id="api">
+                    <thead>
+                        <tr>
+                            <th class="info">Index</th>
+                            <th>Product Id</th>
+                            <th>Product Name</th>
+                            <th>Product Description</th>
+                            <th>Product Released</th>
+                            <th>Price</th>
+                            <th>Time</th>
+                            <th>Posted on</th>
+                            <th>Poster</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <c:if test="${empty prodList}">
+                        <tr align="center">
+                            <td colspan="10">The product list is empty!!</td>
+                        </tr>
+                    </c:if>
+                    <c:forEach var="p" varStatus="st" items="${prodList}">
+                        <tr>
+                            <td><c:out value="${st.count}"></c:out></td>
+                            <td><c:out value="${p.id}"></c:out></td>
+                            <td><c:out value="${p.name}"></c:out></td>
+                            <td ><c:out value="${p.description}"></c:out></td>
+                            <td><c:out value="${p.released }"></c:out></td>
+                            <td><c:out value="${p.price }"></c:out></td>
+                            <td><c:out value="${p.time }"></c:out></td>
+                            <td><c:out value="${p.proddate }"></c:out></td>
+                            <c:set var="contextRoot" value="${pageContext.request.contextPath}"></c:set>
+                            <td><img src="data:image/jpg;base64,${p.imgname}" width="80" height="50" alt="movie-image"/></td>
+                                <!--<td><img src=" <cc:.."/resources/items/..p.imgname}"..>.." height="50" width="50" ></td>-->
+                            <c:set var="id" value="${p.id}"/>
+                            <c:forEach var="il" items="${imageList}">
+                                <c:set var="rid" value="${il.id}"/>
+                                <c:if test="${id==rid}">
+                                <td><img src="data:image/jpg;base64,${il.base64str}" data-id="${rid}" width="80" height="50" alt="movie-image"/></td>
+                                </c:if>
+                            </c:forEach>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
 
-</div>
+        </div>
 
 
-</body>
+    </body>
 </html>

@@ -17,8 +17,15 @@ import com.Dao.CategoryDao;
 import com.Dao.ProductDao;
 import com.Dao.SupplierDao;
 import com.Dao.UserDao;
+import com.model.ImageList;
 import com.model.Product;
 import com.model.User;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.List;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 @Controller
@@ -89,12 +96,13 @@ public class IndexController {
     @RequestMapping(value = "/userLogged")
     public String userlog(HttpSession hs, User user, HttpServletRequest req) {
 
-        
         boolean b = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString().contains("ADMIN");
         System.out.println("userlogged");
         if (b) {
             hs = req.getSession();
-            hs.setAttribute("sess", req.getUserPrincipal().getName());
+            if (!SecurityContextHolder.getContext().getAuthentication().getName().equals(null)) {
+                hs.setAttribute("sess", SecurityContextHolder.getContext().getAuthentication().getName());
+            }
         }
 
         hs.setAttribute("catList", categoryDaoImpl.retrieve());
@@ -162,7 +170,57 @@ public class IndexController {
     @RequestMapping("/prodCatList")
     public ModelAndView getCatTable(@RequestParam("cid") int cid) {
         ModelAndView mv = new ModelAndView();
-        mv.addObject("prodList", productDaoImpl.getProdByCatId(cid));
+        List<Product> prodList = productDaoImpl.getProdByCatId(cid);
+//        List<String> ls = new ArrayList<String>();  //working
+//        HashMap<Integer,String> hm = new HashMap<Integer, String>();
+        List<ImageList> hm = new ArrayList<ImageList>();
+        try {
+            
+            InputStream is = prodList.get(0).getImage().getBinaryStream();
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            byte[] buffer = new byte[4096];
+            int bytesRead = -1;
+
+            while ((bytesRead = is.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+
+            byte[] imageBytes = outputStream.toByteArray();
+            String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+            prodList.get(0).setImgname(base64Image);
+            System.out.println(prodList.get(0).getImgname());
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+        mv.addObject("prodList", prodList);
+
+        try {
+            for (Product product : prodList) {
+                InputStream is = product.getImage().getBinaryStream();
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                byte[] buffer = new byte[4096];
+                int bytesRead = -1;
+
+                while ((bytesRead = is.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+
+                byte[] imageBytes = outputStream.toByteArray();
+                String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+//                ImageList il = new ImageList();
+//                il.setId(product.getId());
+//                il.setBase64str(base64Image);
+//                hm.add(il);
+                is.close();
+                outputStream.close();
+            }
+                mv.addObject("imageList", hm);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         mv.setViewName("ProductCustList");
         return mv;
     }

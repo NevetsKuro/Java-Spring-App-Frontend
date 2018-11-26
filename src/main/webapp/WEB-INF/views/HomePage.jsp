@@ -6,7 +6,7 @@
 <head>
 <title> HomePage </title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
 <style type="text/css">
@@ -210,10 +210,10 @@ opacity: 0.8;
 <!--</div>-->
 <div class="row">
 <div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=43">
-<img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;"src="<c:url value="/resources/items/movie1.9.jpg"/>"><span class="mi-title">Reign of Fire</span>
+<img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.9.jpg"/>"><span class="mi-title">Reign of Fire</span>
 </a></div>
 <div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=44">
-<img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;"src="<c:url value="/resources/items/movie1.10.jpg"/>"><span class="mi-title">Baby Driver</span>
+<img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.10.jpg"/>"><span class="mi-title">Baby Driver</span>
 </a></div>
 <div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=45">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.11.jpg"/>"><span class="mi-title">IT</span>
@@ -236,7 +236,7 @@ opacity: 0.8;
 <div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=49">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.15.jpg"/>"><span class="mi-title">LIFE</span>
 </a></div>
-<div class="col-sm-3"><a class="homepageanchor" href=productDetail?pid=50">
+<div class="col-sm-3"><a class="homepageanchor" href="productDetail?pid=50">
 <img class="mi-img img-rounded img-responsive" alt="#" style="height:300px;" src="<c:url value="/resources/items/movie1.16.jpg"/>"><span class="mi-title">Birth of the dragon</span>
 </a></div>
 <div>
@@ -342,7 +342,7 @@ opacity: 0.8;
 </div>
 
 <script type="text/javascript">
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function() {scrollFunction();};
 
 function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
