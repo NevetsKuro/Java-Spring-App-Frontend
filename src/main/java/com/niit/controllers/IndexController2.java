@@ -53,6 +53,11 @@ public class IndexController2 {
     public String homepage() {
         return "welcomePage";
     }
+    
+    @RequestMapping("/GoToThis")
+    public String homepage1() {
+        return "productDetails1";
+    }
 
     @RequestMapping("/HomePage2")
     public String Mainpage() {
@@ -142,6 +147,39 @@ public class IndexController2 {
         return "redirect:/HomePage";
     }
 
+    @RequestMapping("/Collections")
+    public ModelAndView retrieveCollections(@RequestParam("collTag") String coll) {
+        ModelAndView mv = new ModelAndView();
+        List<Product> prodList = new ArrayList<>();
+        switch(coll){
+            case "NETFLIX":
+                prodList = productDaoImpl.findByProdByCols("NETFLIX");
+                break;
+            case "BOXOFFICE":
+                prodList = productDaoImpl.findByProdByCols("BOXOFFICE");
+                break;
+            case "GROSSING":
+                prodList = productDaoImpl.findByProdByCols("GROSSING");
+                break;
+            case "PCHOICE":
+                prodList = productDaoImpl.findByProdByCols("PCHOICE");
+                break;
+            case "OSCARWINNER":
+                prodList = productDaoImpl.findByProdByCols("OSCARWINNER");
+                break;
+            case "OLDIES":
+                prodList = productDaoImpl.findByProdByCols("OLDIES");
+                break;
+            default:
+                break;
+        }
+        prodList = convertToString(prodList);
+        
+        mv.addObject("prodList",prodList);
+        mv.setViewName("Product-List");
+        return mv;
+    }
+    
     @RequestMapping("/Error2")
     public String userError() {
         return "Error";
@@ -288,5 +326,35 @@ public class IndexController2 {
     public void getData(Model m) {
         m.addAttribute("catList", categoryDaoImpl.retrieve());
     }
+    
+    public List<Product> convertToString(List<Product> list) {
+        
+        try {
+            for (Product product : list) {
+                InputStream is = product.getImage().getBinaryStream();
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                byte[] buffer = new byte[4096];
+                int bytesRead = -1;
+
+                while ((bytesRead = is.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+
+                byte[] imageBytes = outputStream.toByteArray();
+                String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+                System.out.println("this is it "+base64Image.substring(1, 100));
+                product.setImgname(base64Image);
+                is.close();
+                outputStream.close();
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return list;
+    }
+    
+    
+    
 
 }

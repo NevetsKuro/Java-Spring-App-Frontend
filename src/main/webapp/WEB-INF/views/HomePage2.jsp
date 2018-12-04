@@ -4,6 +4,7 @@
     Author     : wrtrg2
 --%>
 
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -32,40 +33,40 @@
     <body>
 
         <jsp:include page="header1.jsp"></jsp:include>
-        <!-- NAVIGATION -->
-        <div id="navigation">
-            <!-- container -->
-            <div class="container">
-                <div id="responsive-nav">
-                    <!-- category nav -->
-                    <div class="category-nav">
-                        <span class="category-header">Collections <i class="fa fa-list"></i></span>
-                        <ul class="category-list">
-                            <li class="dropdown"><a class="dropdown-toggle" href="#">Netflix Collection <i class="fa fa-angle-right"></i></a></li>
-                            <li class="dropdown"><a class="dropdown-toggle" href="#">Box Office Collection <i class="fa fa-angle-right"></i></a></li>
-                            <li class="dropdown"><a class="dropdown-toggle" href="#">TOP Grossing Collection <i class="fa fa-angle-right"></i></a></li>
-                            <li class="dropdown"><a class="dropdown-toggle" href="#">People s Choice <i class="fa fa-angle-right"></i></a></li>
-                            <li class="dropdown"><a class="dropdown-toggle" href="#">Oscar Winners <i class="fa fa-angle-right"></i></a></li>
-                            <li class="dropdown"><a class="dropdown-toggle" href="#">80's Collection <i class="fa fa-angle-right"></i></a></li>
-                        </ul>
-                    </div>
-                    <!-- /category nav -->
+            <!-- NAVIGATION -->
+            <div id="navigation">
+                <!-- container -->
+                <div class="container">
+                    <div id="responsive-nav">
+                        <!-- category nav -->
+                        <div class="category-nav">
+                            <span class="category-header">Collections <i class="fa fa-list"></i></span>
+                            <ul class="category-list">
+                                <li class="dropdown"><a class="dropdown-toggle" href="Collections?collTag=NETFLIX">Netflix Collection <i class="fa fa-angle-right"></i></a></li>
+                                <li class="dropdown"><a class="dropdown-toggle" href="Collections?collTag=BOXOFFICE">Box Office Collection <i class="fa fa-angle-right"></i></a></li>
+                                <li class="dropdown"><a class="dropdown-toggle" href="Collections?collTag=GROSSING">TOP Grossing Collection <i class="fa fa-angle-right"></i></a></li>
+                                <li class="dropdown"><a class="dropdown-toggle" href="Collections?collTag=PCHOICE">People s Choice <i class="fa fa-angle-right"></i></a></li>
+                                <li class="dropdown"><a class="dropdown-toggle" href="Collections?collTag=OSCARWINNER">Oscar Winners <i class="fa fa-angle-right"></i></a></li>
+                                <li class="dropdown"><a class="dropdown-toggle" href="Collections?collTag=OLDIES">80's Collection <i class="fa fa-angle-right"></i></a></li>
+                            </ul>
+                        </div>
+                        <!-- /category nav -->
 
-                    <!-- menu nav -->
-                    <div class="menu-nav">
-                        <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
-                        <ul class="menu-list">
-                            <li><a href="/MyProjee/HomePage2">Home</a></li>
-                            <li><a href="#">Shop</a></li>
-                            <li class="dropdown mega-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Category&Supplier <i class="fa fa-caret-down"></i></a>
-                                <div class="custom-menu">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <ul class="list-links">
-                                                <li>
-                                                    <h3 class="list-links-title">Suppliers</h3></li>
+                        <!-- menu nav -->
+                        <div class="menu-nav">
+                            <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
+                            <ul class="menu-list">
+                                <li><a href="/MyProjee/HomePage2">Home</a></li>
+                                <li><a href="#">Shop</a></li>
+                                <li class="dropdown mega-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Category&Supplier <i class="fa fa-caret-down"></i></a>
+                                    <div class="custom-menu">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <ul class="list-links">
+                                                    <li>
+                                                        <h3 class="list-links-title">Suppliers</h3></li>
                                                     <c:forEach var="sup" items="${supList}" varStatus="st">
-                                                        <li data-value="${sup.sid}">${sup.supname}</li>
+                                                    <li data-value="${sup.sid}"><a href="">${sup.supname}</a></li>
                                                     </c:forEach>
                                             </ul>
                                             <hr class="hidden-md hidden-lg">
@@ -73,9 +74,9 @@
                                         <div class="col-md-4">
                                             <ul class="list-links">
                                                 <li>
-                                                <h3 class="list-links-title">Categories</h3>
+                                                    <h3 class="list-links-title">Categories</h3>
                                                     <c:forEach var="cat" items="${catList}" varStatus="st">
-                                                        <li data-value="${cat.cid}">${cat.catname}</li>
+                                                    <li data-value="${cat.cid}"><a href="">${cat.catname}</a></li>
                                                     </c:forEach>
                                             </ul>
                                             <hr class="hidden-md hidden-lg">
@@ -83,7 +84,7 @@
                                         <div class="col-md-4">
                                             <ul class="list-links">
                                                 <li>
-                                                    <h3 class="list-links-title">Most Clicked</h3></li>
+                                                    <h3 class="list-links-title">Most Watched</h3></li>
 
                                             </ul>
                                         </div>
@@ -117,8 +118,10 @@
                                             </div>
                                             <ul class="list-links">
                                                 <li>
-                                                    <h3 class="list-links-title">Categories</h3></li>
-                                                <li><a href="#"></a></li>
+                                                    <h3 class="list-links-title">Top 5 Choices</h3></li>
+                                                <c:forEach var="tcw" items="${tcwList}" varStatus="st">
+                                                    <li><a href="productBuy?pid=${tcw.id}">${tcw.name}</a></li>
+                                                </c:forEach>
                                                 <!--Top Choice By Womens-->
                                             </ul>
                                         </div>
@@ -134,8 +137,11 @@
                                             <hr>
                                             <ul class="list-links">
                                                 <li>
-                                                    <h3 class="list-links-title">Categories</h3></li>
+                                                    <h3 class="list-links-title">Top 5 Choices</h3></li>
                                                 <!--Top Choice By Mens-->
+                                                <c:forEach var="tcm" items="${tcmList}" varStatus="st">
+                                                    <li><a href="productBuy?pid=${tcm.id}">${tcm.name}</a></li>
+                                                </c:forEach>
                                             </ul>
                                         </div>
                                         <div class="col-md-3">
@@ -150,8 +156,11 @@
                                             <hr>
                                             <ul class="list-links">
                                                 <li>
-                                                    <h3 class="list-links-title">Top Choices by Film Critics</h3></li>
+                                                    <h3 class="list-links-title">Top 5 Choices by Film Critics</h3></li>
                                                 <!--Top Choice By Film Critics-->
+                                                <c:forEach var="fm" items="${fmList}" varStatus="st">
+                                                    <li><a href="productBuy?pid=${fm.id}">${fm.name}</a></li>
+                                                </c:forEach>
                                             </ul>
                                         </div>
                                         <div class="col-md-3">
@@ -166,29 +175,37 @@
                                             <hr>
                                             <ul class="list-links">
                                                 <li>
-                                                    <h3 class="list-links-title">Categories</h3></li>
+                                                    <h3 class="list-links-title">Top 5 Movies</h3></li>
                                                 <!--Top Under Rated Movies-->
+                                                <c:forEach var="trm" items="${trmList}" varStatus="st">
+                                                    <li><a href="productBuy?pid=${trm.id}">${trm.name}</a></li>
+                                                </c:forEach>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                            <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Manage Masters<i class="fa fa-caret-down"></i></a>
-                                <ul class="custom-menu">
-                                    <li><a href="index.html">Supplier List</a></li>
-                                    <li><a href="products.html">Category List</a></li>
-                                    <li><a href="product-page.html">Product List</a></li>
-                                    <li><a href="checkout.html">User Accounts</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages <i class="fa fa-caret-down"></i></a>
-                                <ul class="custom-menu">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="products.html">Products</a></li>
-                                    <li><a href="product-page.html">Product Details</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                </ul>
-                            </li>
+                            <%
+                                boolean adminRights = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString().contains("ADMIN");
+                            %>
+                            <c:if test="<%=adminRights%>">
+                                <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Manage Masters<i class="fa fa-caret-down"></i></a>
+                                    <ul class="custom-menu">
+                                        <li><a href="index.html">Supplier List</a></li>
+                                        <li><a href="products.html">Category List</a></li>
+                                        <li><a href="product-page.html">Product List</a></li>
+                                        <li><a href="checkout.html">User Accounts</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown default-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Pages <i class="fa fa-caret-down"></i></a>
+                                    <ul class="custom-menu">
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="products.html">Products</a></li>
+                                        <li><a href="product-page.html">Product Details</a></li>
+                                        <li><a href="checkout.html">Checkout</a></li>
+                                    </ul>
+                                </li>
+                            </c:if>
                         </ul>
                     </div>
                     <!-- menu nav -->
@@ -208,11 +225,11 @@
                     <div id="home-slick">
                         <!-- banner -->
                         <div class="banner banner-1">
-                                <img src="/MyProjee/resources/img/4Banners-1.jpg" alt="">
+                            <img src="/MyProjee/resources/img/4Banners-1.jpg" alt="">
                             <div class="banner-caption text-center">
                                 <button class="primary-btn" style="padding: 10px 3px;border-radius: 4px">
-                                <span class="font-weak" >Up to 50% Discount</span>
-                                <span class="primary-color">Shop Now</span></button>
+                                    <span class="font-weak" >Up to 50% Discount</span>
+                                    <span class="primary-color">Shop Now</span></button>
                             </div>
                         </div>
                         <!-- /banner -->
@@ -235,10 +252,10 @@
                             </div>
                         </div>
                         <!-- /banner -->
-                        
+
                         <!-- banner -->
                         <div class="banner banner-1">
-                                <img src="/MyProjee/resources/img/4Banners-4.jpg" alt="">
+                            <img src="/MyProjee/resources/img/4Banners-4.jpg" alt="">
                             <div class="banner-caption text-center">
                                 <h1 class="white-color">Are You Scared?</h1>
                                 <h3 class="white-color font-weak">We Got Horror</h3>
@@ -531,7 +548,7 @@
         <div class="section">
             <!-- container -->
             <div class="container">
-                
+
                 <!-- row -->
                 <div class="row">
                     <!-- section title -->

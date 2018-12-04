@@ -73,7 +73,7 @@
                             boolean b1 = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString().contains("ADMIN");
                         %>
                         <li><a href="HomePage"><span class="glyphicon glyphicon-home"></span></a></li>
-                        <c:if test="<%=b1%>">
+                                <c:if test="<%=b1%>">
                             <li><a href="goAEntry">Admin</a></li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin List<span class="caret"></span></a>
@@ -103,7 +103,7 @@
                                 <ul class="dropdown-menu">
                                     <c:forEach var="supVal" items="${supList}">
                                         <li><a href="${pageContext.request.contextPath}/prodSupList?sid=${supVal.sid}">${supVal.supname}</a></li>
-                                        </c:forEach>
+                                    </c:forEach>
                                 </ul>
                             </li>
                         </c:if>

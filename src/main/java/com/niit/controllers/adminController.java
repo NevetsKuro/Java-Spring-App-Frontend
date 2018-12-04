@@ -83,7 +83,7 @@ public class adminController {
         m.addAttribute("catList", categoryDaoImpl.retrieve());
         m.addAttribute("supList", supplierDaoImpl.retrieve());
         m.addAttribute("prodList", productDaoImpl.retrieve());
-        return "adminEntry";
+        return "adminEntry1";
     }
 
     //@RequestParam("cid") int cid,

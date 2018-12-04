@@ -60,7 +60,7 @@ public class IndexController {
 
     @RequestMapping("/HomePage")
     public String Mainpage() {
-        return "HomePage";
+        return "HomePage2";
     }
 
     @RequestMapping("/goToLogin")
@@ -108,6 +108,10 @@ public class IndexController {
         hs.setAttribute("catList", categoryDaoImpl.retrieve());
         hs.setAttribute("supList", supplierDaoImpl.retrieve());
         hs.setAttribute("prodList", productDaoImpl.retrieve());
+        hs.setAttribute("tcwList", productDaoImpl.findByProdByTopChoice("1"));
+        hs.setAttribute("tcmList", productDaoImpl.findByProdByTopChoice("2"));
+        hs.setAttribute("fmList", productDaoImpl.findByProdByTopChoice("3"));
+        hs.setAttribute("trmList", productDaoImpl.findByProdByTopChoice("4"));
         return "redirect:/HomePage";
     }
 

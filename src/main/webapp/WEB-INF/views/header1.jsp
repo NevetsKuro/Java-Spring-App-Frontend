@@ -4,6 +4,7 @@
     Author     : wrtrg2
 --%>
 
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <header>
@@ -22,9 +23,9 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">ENG <i class="fa fa-caret-down"></i></a>
                         <ul class="custom-menu">
                             <li><a href="#">English (ENG)</a></li>
-                            <li><a href="#">Russian (Ru)</a></li>
+                            <li><a href="#">Russian (RU)</a></li>
                             <li><a href="#">French (FR)</a></li>
-                            <li><a href="#">Spanish (Es)</a></li>
+                            <li><a href="#">Spanish (ES)</a></li>
                         </ul>
                     </li>
                     <li class="dropdown default-dropdown">
@@ -46,7 +47,7 @@
             <div class="pull-left">
                 <!-- Logo -->
                 <div class="header-logo">
-                    <a class="logo" href="#">
+                    <a class="logo" href="HomePage2">
                         <h1 class="primary-color">TokeiMovies</h1>
                     </a>
                 </div>
@@ -77,14 +78,35 @@
                             </div>
                             <strong class="text-uppercase">My Account <i class="fa fa-caret-down"></i></strong>
                         </div>
-                        <a href="#" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Join</a>
-                        <ul class="custom-menu">
-                            <li><a href="#"><i class="fa fa-user-o"></i> ${pageContext.request.userPrincipal.name}</a></li>
-                            <li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
-                            <li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
-                            <li><a href="#"><i class="fa fa-unlock-alt"></i> Login</a></li>
-                            <li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>
-                        </ul>
+                        <%
+                            boolean adminRights = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString().contains("ADMIN");
+                        %>
+                        <c:if test="<%=!adminRights%>">
+                            <a href="goToLogin" class="text-uppercase">Login</a> / <a href="Register" class="text-uppercase">Join</a>
+                            <ul class="custom-menu">
+                                <li><a href="#"><i class="fa fa-user-o"></i> ${pageContext.request.userPrincipal.name}</a></li>
+                                <li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
+                                <li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
+                                <c:if test="${pageContext.request.userPrincipal.name!=null}">
+                                    <li><a href="${pageContext.request.contextPath}/logout"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
+                                </c:if>
+                                <c:if test="${pageContext.request.userPrincipal.name==null}">
+                                    <li><a href="#"><i class="fa fa-unlock-alt"></i> Login</a></li>
+                                    <li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>
+                                </c:if>
+                            </ul>
+                        </c:if>
+                        <c:if test="<%=adminRights%>">
+                            <a href="#" class="text-uppercase">Login</a> / <a href="#" class="text-uppercase">Join</a>
+                            <ul class="custom-menu">
+                                <li><a href="#"><i class="fa fa-user-o"></i> ${pageContext.request.userPrincipal.name}</a></li>
+                                <li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
+                                <li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
+                                <li><a href="goAEntry"><i class="fa fa-table"></i>Master Table</a></li>
+                                <li><a href="#"><i class="fa fa-file"></i>Instructions</a></li>
+                                <li><a href="${pageContext.request.contextPath}/logout"><i class="fa fa-window-close"></i> Logout</a></li>
+                            </ul>    
+                        </c:if>
                     </li>
                     <!-- /Account -->
 

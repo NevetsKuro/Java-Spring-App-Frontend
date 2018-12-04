@@ -1,3 +1,6 @@
+<%@page import="java.util.Base64"%>
+<%@page import="java.io.ByteArrayOutputStream"%>
+<%@page import="java.io.InputStream"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -26,8 +29,9 @@ border-bottom: 1px solid grey;
 <tr><td>Movie-Name:</td><td>${prod.name}</td></tr>
 <tr><td>Description:</td><td>${prod.description}</td></tr>
 <tr><td>Amount:</td><td>${prod.price}</td></tr>
+
 <tr><td>Provider:</td><td>${prod.supplier.supname}</td></tr>
-<tr><td>Quantity:</td><td><input type="number" class="" name="pQty" form="f1" max="${prod.stock}" required/><td></tr>
+<tr><td>Quantity:</td><td><input type="number" name="pQty" form="f1" max="${prod.stock}" required/><td></tr>
 </table>
 <div>
 <form id="f1" action="addToCart" method="post" style="height: 50px">

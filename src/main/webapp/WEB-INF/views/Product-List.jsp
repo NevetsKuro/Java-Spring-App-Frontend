@@ -61,7 +61,7 @@
                                         <span class="sale">-${prods.discount}%</span>
                                     </div>
                                     </c:if>
-                                    <button class="main-btn quick-view" data-id="${prods.id}"><i class="fa fa-search-plus"></i> Quick view</button>
+                                    <button id="showProductDetails" class="main-btn quick-view" data-pid="${prods.id}"><i class="fa fa-search-plus"></i> Quick view</button>
                                     <img src="data:image/jpg;base64,${prods.imgname}" alt="">
                                 </div>
                                 <div class="product-body">
@@ -77,7 +77,7 @@
                                     <div class="product-btns">
                                         <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                         <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-                                        <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                        <button data-pid="${prods.id}" id="addToCart" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
                                     </div>
                                 </div>
                             </div>

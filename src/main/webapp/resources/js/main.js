@@ -18,6 +18,12 @@
     menuList.toggleClass('open');
   });
 
+    $(document).on('click', '#addToCart', function () {
+        window.open('');
+    });
+    $(document).on('click', '#showProductDetails', function () {
+        window.open('productBuy?pid='+$(this).data('pid'),'_self');
+    });
   $(document).click(function(event) {
     if (!$(event.target).closest(responsiveNav).length) {
       if (responsiveNav.hasClass('open')) {
