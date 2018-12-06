@@ -27,5 +27,5 @@ How to Setup the project?
 <li>Once running, the project will redirect yuh to a login page. The table will generate automatically once compiled. For login details, add by adding a new row in users table in h2 database.</li>
 </ul>
 
-<p>Any help required, please email at stevenfernz96@gmail.com</p>
+<p>Any help required, please email at <a href = "mailto: abc@example.com">stevenfernz96@gmail.com</a></p>
     
