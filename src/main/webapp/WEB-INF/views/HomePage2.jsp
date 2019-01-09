@@ -201,6 +201,7 @@
                                     <ul class="custom-menu">
                                         <li><a href="index.html">Home</a></li>
                                         <li><a href="products.html">Products</a></li>
+                                        <li><a href="goAEntry">Admin Edit</a></li>
                                         <li><a href="product-page.html">Product Details</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
                                     </ul>

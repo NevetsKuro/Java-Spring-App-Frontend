@@ -222,7 +222,7 @@
                                                             <select class="form-control" name="pSupplier" required>
                                                                 <option value="">---Select Supplier---</option>
                                                             <c:forEach items="${supList}" var="sup">
-                                                                <option value="${sup.sid}">${sup.sid}</option>
+                                                                <option value="${sup.sid}">${sup.supname}</option>
                                                             </c:forEach>
                                                         </select>
                                                     </td>
@@ -240,7 +240,7 @@
                                                         <select class="form-control" name="pCategory" required>
                                                             <option value="">---Select Category---</option>
                                                             <c:forEach items="${catList}" var="cat">
-                                                                <option value="${cat.cid}">${cat.cid}</option>
+                                                                <option value="${cat.cid}">${cat.catname}</option>
                                                             </c:forEach>
                                                         </select>
                                                     </td>
